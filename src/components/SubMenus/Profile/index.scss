@@ -1,0 +1,215 @@
+.left-div {
+    width: 45%;
+    height: 95vh;
+
+
+    box-sizing: border-box;
+    flex-shrink: 0;
+    z-index: 1100;
+    transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    box-shadow: antiquewhite;
+    backdrop-filter: blur(30px);
+
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: rgb(45, 56, 67);
+
+    .profile-photo {
+        // border-style: solid;
+        // border-width: 2px 2px thin;
+        // border-color: rgb(255, 255, 255);
+
+        position: absolute;
+        left: 3%;
+        top: 3vh;
+        width: 95%;
+        height: 35vh;
+    }
+
+    .cover-photo {
+        border-style: solid;
+        border-width: 4px 4px thin;
+        border-color: rgb(255, 255, 255);
+
+        position: absolute;
+        left: 40%;
+        top: 28vh;
+        width: 150px;
+        height: 150px;
+    }
+
+    .main-name {
+        font-family: 'Century Gothic';
+        font-weight: bold;
+        font-size: 21px;
+        text-align: center;
+
+        color: rgb(0, 0, 0);
+
+        position: absolute;
+
+        width: 40%;
+        left: 32%;
+        top: 50vh;
+    }
+
+    .main-title {
+        font-family: 'Century Gothic';
+        text-align: center;
+        font-size: 16px;
+        color: rgb(0, 0, 0);
+
+        position: absolute;
+
+        width: 40%;
+        left: 32%;
+        top: 55vh;
+    }
+
+    .main-story {
+        font-family: 'Century Gothic';
+        text-align: center;
+        font-size: 13px;
+        color: rgb(0, 0, 0);
+
+        position: absolute;
+
+        width: 90%;
+        left: 5%;
+        top: 61vh;
+    }
+
+    .pagebuttons-container {
+        position: absolute;
+
+        left: 20%;
+        top: 67vh;
+        width: 60%;
+        height: 30vh;
+
+        .page-buttons {
+
+            font-size: 13px;
+            margin-bottom: 1.5vh;
+            border-width: 1px 1px thin;
+            border-color: rgb(111, 111, 111);
+
+            color: rgb(255, 255, 255);
+            width: 100%;
+            height: 5vh;
+        }
+
+        .page-buttons:hover {
+
+            font-size: 14px;
+            border-color: rgb(255, 255, 255);
+        }
+    }
+
+    .editbutton {
+        position: absolute;
+
+        right: 20%;
+        bottom: 3vh;
+    }
+}
+
+.right-div {
+    position: absolute;
+    left: 51.5%;
+    top: 12vh;
+    width: 45%;
+    height: 95vh;
+
+    padding: 5vh 5% 5vh 5%;
+
+    box-sizing: border-box;
+    flex-shrink: 0;
+    z-index: 1100;
+    transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    box-shadow: antiquewhite;
+    backdrop-filter: blur(30px);
+
+    background: rgba(0, 0, 0, 0.8) !important;
+
+    .profile-text {
+        font-family: 'Bahnschrift';
+
+        color: rgb(255, 255, 255);
+        margin-bottom: 2vh;
+
+        font-size: medium;
+    }
+
+    .profile-status {
+        font-family: 'Bahnschrift';
+        font-size: '16px';
+
+        color: rgb(255, 255, 255);
+        margin: 1vh 0% 5vh 0%;
+    }
+
+    .profile-name {
+        width: 100%;
+        margin-bottom: 5vh;
+
+        .nameIcon {
+            margin: 1.5vh 3% 0vh 0%;
+            color: rgb(255, 255, 255);
+        }
+    }
+
+    .profile-title {
+        width: 100%;
+        margin-bottom: 5vh;
+
+        .titleIcon {
+            margin: 0vh 3% 0vh 0%;
+            color: rgb(255, 255, 255);
+        }
+    }
+
+    .profile-bio {
+        width: 100%;
+        margin-bottom: 5vh;
+
+        .bioIcon {
+            margin: 0vh 3% 0vh 0%;
+            color: rgb(255, 255, 255);
+        }
+
+    }
+    .cover-status {
+        font-family: 'Bahnschrift';
+        font-size: '16px';
+
+        color: rgb(255, 255, 255);
+        margin: 1vh 0% 5vh 0%;
+    }
+
+    .cover-text {
+        font-family: 'Bahnschrift';
+
+        color: rgb(255, 255, 255);
+        margin-bottom: 2vh;
+
+        font-size: medium;
+    }
+    
+    .savebutton {
+        position: absolute;
+
+        left: 12%;
+        bottom: 3vh;
+        width: 36%;
+    }
+
+    .cancelbutton{
+        position: absolute;
+
+
+        right: 12%;
+        bottom: 3vh;
+
+        width: 36%;
+    }
+}

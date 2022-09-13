@@ -1,0 +1,75 @@
+.creatorsTable {
+    position: absolute;
+    left: 1%;
+    top: 12vh;
+    width: 97%;
+
+    max-height: 45vh;
+    overflow-y: scroll;
+}
+
+.reqeustsTable {
+    position: absolute;
+    left: 1%;
+    top: 60vh;
+    width: 97%;
+    max-height: 45vh;
+    overflow-y: scroll;
+
+}
+
+.acceptedDiv {
+    width: 300px;
+    margin: 20px 0px 0px 20px;
+    font-family: 'Javanese Text';
+    font-size: 23px;
+}
+
+.requestedDiv {
+    width: 300px;
+    margin: 20px 0px 0px 20px;
+    font-family: 'Javanese Text';
+    font-size: 23px;
+}
+
+.acceptButton {
+    margin: 30px 20px 20px 20px;
+    width: 97%;
+    height: 50px;
+    border-radius: 5px;
+    font-family: 'Comic Sans MS';
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.acceptButton:hover {
+    background-color: rgb(90, 102, 192);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.acceptButton:active {
+    background-color: rgb(244, 111, 45);
+    cursor: pointer;
+}
+
+.acceptButton:disabled {
+    cursor: not-allowed;
+    background-color: #2b2829;
+    color: rgb(255, 255, 255);
+}
+
+.loader-container {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.834) url("https://media.giphy.com/media/8agqybiK5LW8qrG3vJ/giphy.gif") center no-repeat;
+    z-index: 1;
+}
+
+.acceptingText {
+    font-family: 'Bahnschrift';
+    position: absolute;
+    left: 40%;
+    top: 35vh;
+}

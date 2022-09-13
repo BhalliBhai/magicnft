@@ -1,0 +1,67 @@
+
+.urlDivs {
+    position: absolute;
+
+    border-radius: 5px;
+    border-color: rgb(255, 255, 255);
+    background: rgb(146, 143, 143);
+
+    width: 92%;
+    height: 7vh;
+
+    left: 4%;
+
+    font-family: 'Segoe UI';
+    font-size: 17px;
+    text-decoration: underline;
+
+    text-indent: 10px;
+
+    padding: 10px 20px 10px 10px;
+}
+
+.ant-switch {
+    background: rgb(226, 70, 70);
+    background-image: none !important;
+    position: absolute;
+    
+    left: 88%;
+    width: 4%;
+}
+
+.ant-switch-checked {
+    background: rgb(6, 137, 6) !important;
+}
+
+.copyImg {
+    position: absolute;
+    right: 2%;
+    top: 2vh;
+}
+
+.copyImg:hover {
+    cursor: pointer;
+    border-color: rgb(255, 255, 255);
+}
+
+.swithStyle {
+    cursor: pointer;
+}
+
+.swithStyle:hover {
+    cursor: pointer;
+}
+
+.userImageStyle {
+    width: 3.5%;
+    height: 5vh;
+    position: absolute;
+    left: 3%;
+    top: 5vh;
+}
+
+.urls {
+    position: absolute;
+    color: white;
+    /* left: 0%; */
+}
