@@ -12,6 +12,9 @@ import { SiteModule } from './sites/sites.module';
 import { TileModule } from './tiles/tiles.module';
 import { ProfileModule } from './profile/profile.module';
 
+
+console.log(process.env.MONGO_URI);
+
 @Module({
   imports: [
     ServeStaticModule.forRoot({

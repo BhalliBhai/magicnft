@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../wallet-connect"
+		},
+		{
+			"path": "../../../metaplex-anchor-nft"
+		},
+		{
+			"path": "../../../solaVamps"
+		},
+		{
+			"path": "../../../solblog"
+		},
+		{
+			"path": "../../../nft-gated-website-solana"
+		}
+	],
+	"settings": {}
+}

@@ -25,6 +25,10 @@ export class SiteService {
         tempSite.siteDescription = resetDataDto.siteDescription;
         tempSite.siteThumbnail = resetDataDto.siteThumbnail;
         tempSite.published = resetDataDto.published;
+        tempSite.tokenGate = resetDataDto.tokenGate;
+        tempSite.chainIds = resetDataDto.chainIds;
+
+        console.log('tempsite', tempSite);
 
         return await tempSite.save();
     }
@@ -51,6 +55,9 @@ export class SiteService {
 
     async getInfo() {
         const jsonData = await this.siteModel.find({});
+
+        console.log('my site data', jsonData);
+
         return jsonData;
     }
 }

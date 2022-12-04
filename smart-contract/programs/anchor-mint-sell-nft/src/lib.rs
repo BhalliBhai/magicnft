@@ -7,7 +7,7 @@ use mint::*;
 use sell::*;
 use mint_spl_token::*;
 
-declare_id!("BPoaUKQYHasHr1Zx4ZLLTTMqezWbKKTgBFZv9LDK8drZ");
+declare_id!("H4cywKiiWQK9ShnEzQ7e2L3yXMgms2tcmPmPXciZsP5v");
 
 #[program]
 pub mod anchor_mint_sell_nft {

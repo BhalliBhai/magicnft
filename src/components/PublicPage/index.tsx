@@ -27,6 +27,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import { Switch } from '@material-ui/core';
 
 import { FileUploader } from "react-drag-drop-files";
 import { NFTStorage } from 'nft.storage';
@@ -92,6 +93,8 @@ import { SketchPicker } from 'react-color';
 // import { Container, Draggable } from 'react-smooth-dnd';
 
 // This is your APIKEY of the NFT storage. When you access NFT Storage, create new user and get new API KEY for save the datas
+
+const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 const APIKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGM5MzIwNTBFODQwYzM4OWNGM2ZlRjRGQzFDODg1RTA4NTFlQ2NjMzIiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2MTQzOTcwNTI0NywibmFtZSI6Ik1hZ2ljTkZUeSJ9.XOg1e6ny5njX54-b8I3yrjQmoCGj4FQXj9wgy_oYk94';
 
@@ -289,7 +292,9 @@ const PublicPage = () => {
             siteName: pageName,
             siteDescription: pageDescription,
             siteThumbnail: uploadedThumbImage,
-            published: true
+            published: true,
+            tokenGate: tokenGate,
+            chainIds: chainIds
         }
         setPublishUploadingNow(true);
         await axios.post('/creatorsite/resetsite', publicSiteInfo);
@@ -365,11 +370,19 @@ const PublicPage = () => {
     // ------------Variables and Functions for 'Edit Page'--------------- //
 
     const [pageInfo, setPageInfo] = useState<any>();
-    const [editPage, setEditPage] = useState(false);
+    const [editPage, setEditPage] = useState(true);
     const [pageName, setPageName] = useState('Untitled Page');
     const [pageDescription, setPageDescription] = useState('');
     const [thumbnailFile, setThumbnailFile] = useState<any>('');
     const [uploadedThumbImage, setUploadedThumbImage] = useState('');
+    
+    const [tokenGate, settokenGate] = useState(false);
+    const [chainIds, setChainIds] = useState('');
+
+    const onTokenGatePressed = () => {
+        settokenGate(!tokenGate);
+        console.log('value changes', tokenGate);
+    }
 
     const onEditPagePressed = () => {
         setEditPage(true);
@@ -385,6 +398,13 @@ const PublicPage = () => {
 
     const handlePageDescriptionChange = (e: any) => {
         setPageDescription(e.target.value);
+    }
+
+    const handleChainIdChange = (e: any) => {
+        let ans = e.target.value;
+        ans = ans.split(/[ ,]+/);
+        setChainIds(ans);
+        console.log('chainids', chainIds);
     }
     
     const handleEditImage = (file: any) => {
@@ -1126,12 +1146,16 @@ const PublicPage = () => {
     useEffect(() => {
         (async () => {
             const res = await axios.get('/creatorsite/siteinfo');
-            console.log(res);
+            console.log('getting public sites', res);
             const siteData = res.data.filter(
                 (item: any) => item.siteUrl === window.location.search.split('=')[1]
             );
             setSiteID(siteData[0]._id);
             if (siteData[0].published === true) {
+
+                settokenGate(siteData[0].tokenGate);
+                setChainIds(siteData[0].chainIds);
+
                 setPageDescription(siteData[0].siteDescription);
                 setUploadedThumbImage(siteData[0].siteThumbnail);
                 setPageName(siteData[0].siteName);
@@ -1193,6 +1217,10 @@ const PublicPage = () => {
 
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
+
+    if(tokenGate){
+        
+    }
 
     return (
         <div className="mainBackground" id="mainBack">
@@ -1257,6 +1285,8 @@ const PublicPage = () => {
 
             </div>
             {/* ====================================== To Show Text Windows ======================== */}
+
+            {tokenGate ? console.log('token gated', chainIds) : console.log('not token gate') }
 
             {allTextData?.length > 0 ?
                 (
@@ -1993,12 +2023,35 @@ const PublicPage = () => {
                             id="standard-multiline-static"
                             label="Description"
                             multiline
-                            rows={4}
+                            rows={1}
                             defaultValue="" 
                             variant="standard"
                             sx={{ width: '98%' }}
                             onChange={handlePageDescriptionChange}
                             value={pageDescription}
+                        />
+                        <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'flex-end',
+                            width: '98%',
+                            mb: 3
+                        }}>
+                            <p > Token Gate</p>
+                            <Switch {...label} 
+                                onChange={onTokenGatePressed}
+                            />
+                        </Box>
+                        <TextField
+                            id="standard-multiline-static"
+                            label="Contract Address"
+                            multiline
+                            rows={2}
+                            defaultValue="" 
+                            variant="standard"
+                            sx={{ width: '98%' }}
+                            onChange={handleChainIdChange}
+                            value={chainIds}
                         />
                     </Typography>
                 </Box>

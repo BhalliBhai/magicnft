@@ -10,4 +10,6 @@ export interface Site extends Document {
     siteDescription: String;
     siteThumbnail: String;
     published: boolean;
+    tokenGate: boolean;
+    chainIds: Array<number>;
 }

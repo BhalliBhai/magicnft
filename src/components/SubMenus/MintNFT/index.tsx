@@ -20,6 +20,20 @@ import { FileUploader } from "react-drag-drop-files";
 
 import './index.scss';
 
+import axios from 'axios';
+
+import { IWalletProvider, getWalletProvider } from '../../../../src/services/walletProvider';
+
+
+import { Connection, clusterApiUrl, LAMPORTS_PER_SOL } from "@solana/web3.js";import { getParsedNftAccountsByOwner,isValidSolanaAddress, createConnectionConfig,} from "@nfteyez/sol-rayz";
+//create a connection of devnet
+
+
+
+import Myapp from '../../MyApp';
+
+declare const window: any;
+
 const APIKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGM5MzIwNTBFODQwYzM4OWNGM2ZlRjRGQzFDODg1RTA4NTFlQ2NjMzIiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2MTQzOTcwNTI0NywibmFtZSI6Ik1hZ2ljTkZUeSJ9.XOg1e6ny5njX54-b8I3yrjQmoCGj4FQXj9wgy_oYk94';
 const uploadFileTypes = ["JPG", "PNG", "GIF", "SVG", "MP4", "WEBM", "MP3", "WAV", "OGG", "GLB", "GLTF"];
 
@@ -57,9 +71,12 @@ const MintNFT = () => {
                 image: uploadFile
             });
             setUploadingNow(false);
+
+            console.log('my metadata', metadata);
+
             const pathname = metadata.data.image.pathname.split('//')[1];
             setUploadedNft('https://ipfs.io/ipfs/' + pathname);
-            console.log(uploadedNft);
+            console.log('my uploaded nft', uploadedNft);
 
         } catch (error) {
             console.log(error);
@@ -263,6 +280,7 @@ const MintNFT = () => {
                 </Box>
                 <Button variant="contained" color="secondary" sx={{ position: 'absolute', left: '73%', top: '95vh'}}> Mint NFT </Button>
             </Card>
+            <Myapp/>
         </div>
     );
 

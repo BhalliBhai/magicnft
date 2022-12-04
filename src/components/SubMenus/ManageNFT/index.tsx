@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 
 import './index.scss'
 
+
 const itemData = [
     {
         img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
@@ -100,7 +101,7 @@ const ManageNFT = () => {
     const [showStatusNFT, setShowStatusNFT] = useState(false);
     const [showNFTSetting, setShowNFTSetting] = React.useState<null | HTMLElement>(null);
 
-
+      
     const handleOpenShowNFTSetting = (event: React.MouseEvent<HTMLElement>) => {
         setShowNFTSetting(event.currentTarget);
     }
@@ -212,6 +213,9 @@ const ManageNFT = () => {
                     />
                 </Card>
             ) : (<></>)}
+
+            
+
 </div>
     );
 }
