@@ -22,6 +22,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 
 import './index.scss';
 
+import endpoint from '../../../../endpoint.config';
+
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
         backgroundColor: '#44b700',
@@ -74,7 +76,7 @@ const siteDataCard = {
 const Dashboard = () => {
 
     const [siteData, setSiteData] = useState<any>([]);
-    var preUrl = 'https://magic-nfty.herokuapp.com/public?token=';
+    var preUrl = 'https://' + endpoint.BaseUrl + '/public?token=';
 
     useEffect(() => {
         (async () => {
@@ -144,7 +146,7 @@ const Dashboard = () => {
                                     aria-controls="panel-content"
                                     id="panel-header"
                                 >
-                                    <Typography sx={{ ml: 2, width: '80%' }}> https://magic-nfty.herokuapp.com/public?token={item.siteUrl} / {item.siteType? item.siteType: 'draft'} page</Typography>
+                                    <Typography sx={{ ml: 2, width: '80%' }}> https://{endpoint.BaseUrl}/public?token={item.siteUrl} / {item.siteType? item.siteType: 'draft'} page</Typography>
                                     <Switch sx={{ ml: 30 }} />
 
                                 </AccordionSummary>

@@ -46,6 +46,8 @@ import CardContent from '@mui/material/CardContent';
 
 import { useNavigate } from "react-router-dom";
 
+import endpoint from '../../../endpoint.config';
+
 const adminModalStyle = {
   position: 'absolute' as 'absolute',
   top: '50vh',
@@ -164,12 +166,14 @@ const MainPage = () => {
   }
 
 
-  const [creatorUrl, setCreatorUrl] = useState('magic-nfty.herokuapp.com/verify?token=');
+  //changeurl
+  const [creatorUrl, setCreatorUrl] = useState(endpoint.BaseUrl + '/verify?token=');
   const handleCreatorUrl = (e: any) => {
     setCreatorUrl(e.target.value);
   }
 
-  const [publicUrl, setPublicUrl] = useState('magic-nfty.herokuapp.com/public?token=');
+  //changeurl
+  const [publicUrl, setPublicUrl] = useState(endpoint.BaseUrl + '/public?token=');
   const handlePublicUrl = (e: any) => {
     setPublicUrl(e.target.value);
   }

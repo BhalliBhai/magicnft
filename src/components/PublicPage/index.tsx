@@ -90,6 +90,13 @@ import { styled } from '@mui/material/styles';
 import { SketchPicker } from 'react-color';
 
 
+import { Connection, LAMPORTS_PER_SOL } from "@solana/web3.js";import { getParsedNftAccountsByOwner,isValidSolanaAddress, createConnectionConfig,} from "@nfteyez/sol-rayz";
+//create a connection of devnet
+
+import { clusterApiUrl } from "@solana/web3.js";
+
+declare const window: any;
+
 // import { Container, Draggable } from 'react-smooth-dnd';
 
 // This is your APIKEY of the NFT storage. When you access NFT Storage, create new user and get new API KEY for save the datas
@@ -103,6 +110,10 @@ const uploadImageFileTypes = ["JPG", "PNG", "GIF"];
 const uploadAudioFileTypes = ["mp3", "wav"];
 
 const uploadVideoFileTypes = ["avi", "mp4", "wmv"];
+
+function delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
 
 const imageFitSolid = {
     width: '100%',
@@ -378,10 +389,126 @@ const PublicPage = () => {
     
     const [tokenGate, settokenGate] = useState(false);
     const [chainIds, setChainIds] = useState('');
+    const [chainIdsupdated, setchainIdsupdated] = useState<any>([]);
 
-    const onTokenGatePressed = () => {
+    const [walletChainIds, setWalletChainIds] = useState<any>([]);
+    const [walletAddress, setWalletAddress] = useState<string>('')
+
+    const [tokenGateVerified, settokenGateVerified] = useState(false);
+
+
+    const getProvider = () => {
+        if ("solana" in window) {
+        const provider = window.solana;
+        if (provider.isPhantom) {
+          return provider;
+         }
+        }
+    }
+
+    const createConnectionConfig = (obj: any) => {
+        return new Connection(obj);
+    }
+
+    const getAllNftData = async () => {
+        try {
+            const connect = createConnectionConfig(clusterApiUrl("devnet"));
+            const provider = getProvider();
+            let ownerToken = provider.publicKey;
+            const result = isValidSolanaAddress(ownerToken);
+            console.log("result", result);
+    const nfts = await getParsedNftAccountsByOwner({
+              publicAddress: ownerToken,
+              connection: connect,
+            });
+            return nfts;
+          
+        } catch (error) {
+          console.log(error);
+        }
+    }
+
+    const getNftTokenData = async () => {
+        try {
+          const nftData: any = await getAllNftData();
+
+          console.log('nft Data', nftData);
+
+          //var data = Object.keys(nftData).map((key) => nftData[key]);                                                                    
+          //let arr = [];
+          //let n = data.length;
+          //for (let i = 0; i < n; i++) {
+          //  console.log(data[i].data.uri);
+          //  let val = await axios.get(data[i].data.uri);
+          //  arr.push(val);
+          //}
+          return nftData;
+        } catch (error) {
+          console.log(error);
+        }
+    }
+
+    /*
+    useEffect(() => {
+        async function data() {
+          const res = await getAllNftData();
+          setNftData(res);
+          setLoading(true);
+        }
+        data();
+      }, []);
+      */
+
+    
+    const connectWallet = async (): Promise<void> => {
+        
+        const { solana } = window
+        if (solana) {
+        const response = await solana.connect()
+        console.log('Connected with Public Key:', response.publicKey.toString());
+        setWalletAddress(response.publicKey.toString());
+        }
+
+        const res = await getAllNftData();
+
+        let ans: any = [];
+
+        res?.map( (ele: any) => {
+            ans.push(ele.mint)
+            console.log('setting chain ids', walletChainIds)
+            setWalletChainIds(ans);
+        });
+
+        let check = false;
+
+        /*
+        chainIdsupdated.forEach( async (element: any) => {
+            if( walletChainIds.includes(element)){
+                settokenGateVerified(true);
+                await delay(2000);
+                check = true;
+                console.log('match found', element, tokenGateVerified, check);
+            }
+        });
+
+        console.log('res', res, chainIdsupdated, walletChainIds, tokenGateVerified, check);
+        */
+
+        //const AnchorCode = new anchorClient();
+        //await AnchorCode.mintToken();
+    }
+
+
+const renderNotConnected = () : JSX.Element => (
+    <button
+    onClick={connectWallet}
+    >
+        Connect to Wallet!
+    </button>
+)
+
+    const onTokenGatePressed = (e: any) => {
         settokenGate(!tokenGate);
-        console.log('value changes', tokenGate);
     }
 
     const onEditPagePressed = () => {
@@ -1155,17 +1282,47 @@ const PublicPage = () => {
 
                 settokenGate(siteData[0].tokenGate);
                 setChainIds(siteData[0].chainIds);
+                
+                let ans: any;
+
+                console.log('chainIds', chainIds, siteData[0].chainIds);
+
+                if(siteData[0].chainIds.includes(',')){
+                    ans = siteData[0].chainIds.split(/[ ,]+/);
+                }else{
+                    console.log('temp', [siteData[0].chainIds]);
+                    ans = Array.from(siteData[0].chainIds);
+                }
+
+                setchainIdsupdated(ans);
 
                 setPageDescription(siteData[0].siteDescription);
                 setUploadedThumbImage(siteData[0].siteThumbnail);
                 setPageName(siteData[0].siteName);
                 setPageStatus(siteData[0].siteType);
+
+                console.log('all  params', chainIdsupdated, chainIds, siteData[0].chainIds);
+
             }
             else if (siteData[0].published === false) {
                 setPageStatus('Draft');
             }
 
-            const tilesData = (await axios.post('/tiles/tilesinfo', { siteId: siteData[0]._id })).data;
+        })();
+    }, []);
+
+    useEffect(() => {
+        chainIdsupdated.forEach( (element: any) => {
+            if( walletChainIds.includes(element)){
+                settokenGateVerified(true);
+                console.log('match found', element);
+            }
+        });
+    }, [chainIdsupdated, walletAddress, walletChainIds]);
+
+    useEffect(() => {
+        (async () => {
+            const tilesData = (await axios.post('/tiles/tilesinfo', { siteId: siteID })).data;
             const imageTiles = tilesData.filter(
                 (item: any) => item.tileType === 'image'
             );
@@ -1213,17 +1370,82 @@ const PublicPage = () => {
             );
             setAllLinksData(linkTiles[0].tileValue);
         })();
-    }, []);
-
-
+    }, [tokenGateVerified , tokenGate]);
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
 
-    if(tokenGate){
-        
+    const populateChainIds = () => {
+
+        let samp;
+
+        if(chainIds.includes(',')){
+            samp = chainIds.split(/[ ,]+/);
+        }else{
+            samp = Array.from(chainIds);
+        }
+
+        let ans = samp.map( (ele: any)=> {
+            return <ListItem> <Typography id="modal-modal-title" variant="h6" component="h2">{ele}</Typography> </ListItem>
+        });
+
+        console.log('ans', ans, chainIds, samp);
+
+        return ans;
     }
+
 
     return (
         <div className="mainBackground" id="mainBack">
+     { (tokenGate && !tokenGateVerified) ?
+     (
+     <div>
+            <Backdrop
+                sx={{
+                    color: '#fff',
+                    zIndex: (theme) => theme.zIndex.drawer + 1
+                }}
+                open={publishUploadingNow}
+            >
+                <CircularProgress
+                    color="inherit" />
+            </Backdrop>
+            <div className='publishPanel'>
+                <PublishHeader>
+                    {pageInfo ? pageInfo.name : pageName}
+                    <span style={{ fontSize: '14px' }}> ({pageStatus}) </span>
+                </PublishHeader>
+            </div>
+            <Card className='connect-div'>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                    This is token-gated website!
+                </Typography>             
+        <div>
+        <div>{!walletAddress ? 
+        (
+            <div>
+            
+            <Box>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+                Connect to Phantom Wallet
+            </Typography>
+            <Button variant="contained" onClick={connectWallet}>Connect</Button>
+            </Box>
+            </div>
+        ) : <div></div>}</div>
+        </div>
+        <Typography id="modal-modal-title" variant="h6" component="h2">
+            List of accepted NFTs(contract address)
+        </Typography>
+                                <List>
+                                    {populateChainIds()}
+                                </List>
+                                </Card>
+                                </div>
+                                )
+        
+    :
+    //return 
+    (
+        <div>
             <Backdrop
                 sx={{
                     color: '#fff',
@@ -1286,7 +1508,7 @@ const PublicPage = () => {
             </div>
             {/* ====================================== To Show Text Windows ======================== */}
 
-            {tokenGate ? console.log('token gated', chainIds) : console.log('not token gate') }
+            {tokenGate ? console.log('token gated', chainIds, tokenGateVerified, tokenGate) : console.log('not token gate', chainIds, tokenGateVerified, tokenGate) }
 
             {allTextData?.length > 0 ?
                 (
@@ -2030,6 +2252,17 @@ const PublicPage = () => {
                             onChange={handlePageDescriptionChange}
                             value={pageDescription}
                         />
+                        <TextField
+                            id="standard-multiline-static"
+                            label="Contract Address"
+                            multiline
+                            rows={2}
+                            defaultValue="" 
+                            variant="standard"
+                            sx={{ width: '98%' }}
+                            onChange={handleChainIdChange}
+                            value={chainIds}
+                        />
                         <Box
                         sx={{
                             display: 'flex',
@@ -2042,17 +2275,6 @@ const PublicPage = () => {
                                 onChange={onTokenGatePressed}
                             />
                         </Box>
-                        <TextField
-                            id="standard-multiline-static"
-                            label="Contract Address"
-                            multiline
-                            rows={2}
-                            defaultValue="" 
-                            variant="standard"
-                            sx={{ width: '98%' }}
-                            onChange={handleChainIdChange}
-                            value={chainIds}
-                        />
                     </Typography>
                 </Box>
             </Modal>
@@ -3555,8 +3777,9 @@ const PublicPage = () => {
                     </Typography>
                 </Box>
             </Modal>
-        </div >
-    )
+            </div>
+    )}
+        </div >);
 }
 
 export default PublicPage;

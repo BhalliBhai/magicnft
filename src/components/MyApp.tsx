@@ -154,15 +154,6 @@ const Myapp: React.FC = () => {
     const [loading, setLoading] = useState(false);
 
 
-    const getProvider = () => {
-        if ("solana" in window) {
-        const provider = window.solana;
-        if (provider.isPhantom) {
-          return provider;
-         }
-        }
-    }
-
     const createConnectionConfig = (obj: any) => {
         return new Connection(obj);
     }
@@ -215,6 +206,16 @@ const Myapp: React.FC = () => {
         data();
       }, []);
       */
+
+
+      const getProvider = () => {
+        if ("solana" in window) {
+        const provider = window.solana;
+        if (provider.isPhantom) {
+          return provider;
+         }
+        }
+    }
 
     
     const connectWallet = async (): Promise<void> => {

@@ -17,6 +17,9 @@
 		},
 		{
 			"path": "../../../nft-gated-website-solana"
+		},
+		{
+			"path": "../../../ipfstest"
 		}
 	],
 	"settings": {}

@@ -255,11 +255,12 @@ const TokenGateComponent = ({children} : any) => {
     const [tokenGate, settokenGate] = useState(false);
     const [chainIds, setChainIds] = useState<any>([]);
     const [walletChainIds, setWalletChainIds] = useState<any>([]);
+    const [walletAddress, setWalletAddress] = useState<string>('')
 
 
     const [siteData, setsiteData] = useState<any>();
 
-    const [walletAddress, setWalletAddress] = useState<string>('')
+
     
     const [nftData, setNftData] = useState<any>();
     const [loading, setLoading] = useState(false);
