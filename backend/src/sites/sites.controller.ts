@@ -30,7 +30,9 @@ export class SiteController {
             siteName: req.body.siteName,
             siteType: req.body.siteType,
             siteDescription: req.body.siteDescription,
-            siteThumbnail: req.body.siteThumbnail
+            siteThumbnail: req.body.siteThumbnail,
+            tokenGate: req.body.tokenGate ? req.body.tokenGate : false,
+            chainIds: req.body.chainIds ? req.body.chainIds : []
         };
 
         return await this.siteService.reset(resetDataDto);

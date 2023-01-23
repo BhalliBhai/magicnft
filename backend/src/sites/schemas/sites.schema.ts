@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { array } from 'prop-types';
 import * as validator from 'validator';
 
 export const SiteSchema = new mongoose.Schema({
@@ -41,5 +42,13 @@ export const SiteSchema = new mongoose.Schema({
 
     published: {
         type: Boolean,
+    },
+
+    tokenGate: {
+        type: Boolean,
+    },
+
+    chainIds: {
+        type: Array,
     }
 })

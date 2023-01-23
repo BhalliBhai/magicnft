@@ -23,6 +23,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 import { useNavigate } from "react-router-dom";
 
+import endpoint from '../../../../endpoint.config';
 
 const pagesDig = {
     position: 'absolute',
@@ -79,19 +80,19 @@ const Pages = () => {
     const handlePublicEditPressed = (siteUrl: any) => {
         // navigate(siteUrl);
         // window.open('https://magic-nfty.herokuapp.com/' + siteUrl, "_blank");
-        window.open('http://magic-nfty.herokuapp.com/' + siteUrl, "_blank");
+        window.open('http://' + endpoint.BaseUrl + '/' + siteUrl, "_blank");
         handleCloseMorePublicSetting();
     }
 
     const handlePrivateEditPressed = (siteUrl: any) => {
         // navigate(siteUrl);
-        window.open('http://magic-nfty.herokuapp.com/' + siteUrl, "_blank");
+        window.open('http://' + endpoint.BaseUrl + '/' + siteUrl, "_blank");
         handleCloseMorePrivateSetting();
     }
 
     const handleDraftEditPressed = (siteUrl: any) => {
         // navigate(siteUrl);
-        window.open('http://magic-nfty.herokuapp.com/' + siteUrl, "_blank");
+        window.open('http://' + endpoint.BaseUrl + '/' + siteUrl, "_blank");
         handleCloseMoreDraftSetting();
     }
 
@@ -332,7 +333,7 @@ const Pages = () => {
                                             {item.siteName}
                                         </span>
                                         <br />
-                                        https://magic-nfty.herokuapp.com/public?token={item.siteUrl}
+                                        https://{endpoint.BaseUrl}/public?token={item.siteUrl}
                                     </Typography>
                                     <Tooltip title="Un/Enable Site">
                                         <Switch
@@ -355,7 +356,7 @@ const Pages = () => {
                                             }}
                                             onClick={() => {
                                                 navigator.clipboard.writeText(
-                                                    'https://magic-nfty.herokuapp.com/public?token=' + item.siteUrl
+                                                    'https://' + endpoint.BaseUrl + '/public?token=' + item.siteUrl
                                                 );
                                                 setNotificationText('Site url copied to clipboard successfully!');
                                                 handleSuccessClick();
@@ -440,7 +441,7 @@ const Pages = () => {
                                             {item.siteName}
                                         </span>
                                         <br />
-                                        https://magic-nfty.herokuapp.com/public?token={item.siteUrl}
+                                        https://{endpoint.BaseUrl}/public?token={item.siteUrl}
                                     </Typography>
                                     <Tooltip title="Copy to Clipboard">
                                         <Button
@@ -455,7 +456,7 @@ const Pages = () => {
                                             }}
                                             onClick={() => {
                                                 navigator.clipboard.writeText(
-                                                    'https://magic-nfty.herokuapp.com/public?token=' + item.siteUrl
+                                                    'https://' + endpoint.BaseUrl + '/public?token=' + item.siteUrl
                                                 );
                                                 setNotificationText('Site url copied to clipboard successfully!');
                                                 handleSuccessClick();
@@ -547,7 +548,7 @@ const Pages = () => {
                                             Untitled - {index + 1}
                                         </span>
                                         <br />
-                                        https://magic-nfty.herokuapp.com/public?token={item.siteUrl}
+                                        https://{endpoint.BaseUrl}/public?token={item.siteUrl}
                                     </Typography>
                                     <Tooltip title="Copy to Clipboard">
                                         <Button
@@ -562,7 +563,7 @@ const Pages = () => {
                                             }}
                                             onClick={() => {
                                                 navigator.clipboard.writeText(
-                                                    'https://magic-nfty.herokuapp.com/public?token=' + item.siteUrl
+                                                    'https://' + endpoint.BaseUrl + '/public?token=' + item.siteUrl
                                                 );
                                                 setNotificationText('Site url copied to clipboard successfully!');
                                                 handleSuccessClick();

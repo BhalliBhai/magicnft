@@ -19,10 +19,21 @@ import MintNFT from './components/SubMenus/MintNFT';
 
 import PublicPage from './components/PublicPage';
 
+import TokenGateComponent from "./components/tokenGate";
+
 import { BrowserRouter, Route, Routes, useLocation, Navigate } from "react-router-dom";
+
+
+import { Connection, LAMPORTS_PER_SOL } from "@solana/web3.js";import { getParsedNftAccountsByOwner,isValidSolanaAddress, createConnectionConfig,} from "@nfteyez/sol-rayz";
+//create a connection of devnet
+
 
 import 'antd/dist/antd.css';
 import "./App.css";
+
+
+import axios from 'axios';
+
 
 const MainFunc = () => {
   const [web3AuthNetwork, setWeb3AuthNetwork] = useState<WEB3AUTH_NETWORK_TYPE>("mainnet");
@@ -60,6 +71,9 @@ function PublicRequireAuth({ children }: any) {
   return (authed === 'true') ? (children) : (<Navigate to='/' replace state={{ path: location.pathname }} />);
   
 }
+
+
+
 function App() {
 
   return (
@@ -73,10 +87,11 @@ function App() {
           <Route path="/home/dashboard" element={<RequireAuth><DashBoard /></RequireAuth>} />
           <Route path="/home/profile" element={<RequireAuth><Profile /></RequireAuth>} />
           <Route path="/home/pages" element={<RequireAuth><Pages /></RequireAuth>} />
-          <Route path="/home/managenft" element={<RequireAuth><ManageNFT /></RequireAuth>} />
-          <Route path="/home/mintnft" element={<RequireAuth><MintNFT /></RequireAuth>} />
+          <Route path="/home/managenft" element={<ManageNFT />} />
+          <Route path="/home/mintnft" element={<MintNFT />} />
         </Route>
         <Route path="/public" element={<PublicRequireAuth><PublicPage /></PublicRequireAuth>} />
+        <Route path="/verifyNFT" element={<PublicRequireAuth><TokenGateComponent/></PublicRequireAuth>} />
       </Routes> 
     </BrowserRouter>
   );

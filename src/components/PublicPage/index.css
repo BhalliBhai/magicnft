@@ -36,3 +36,14 @@
 .forDrag {
     z-index: 1000;
 }
+
+.connect-div {
+    position: absolute;
+    left: 27.5%;
+    top: 13vh;
+    width: 45%;
+    height: 40vh;
+
+    padding: 5vh 5% 5vh 5%;
+
+}

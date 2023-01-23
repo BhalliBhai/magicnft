@@ -48,4 +48,7 @@ export class PublishSiteDto {
     })
     @IsNotEmpty()
     readonly siteType: string;
+
+    readonly tokenGate: boolean;
+    readonly chainIds: Array<number>;
 }
