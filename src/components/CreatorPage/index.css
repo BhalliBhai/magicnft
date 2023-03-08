@@ -1,4 +1,4 @@
-.userLogDiv {
+/* .userLogDiv {
     position: absolute;
     background-color: rgb(0, 21, 41);
     width: 25%;
@@ -20,13 +20,12 @@
     font-family: 'Cooper';
     font-size: 20px;
     font-weight: bold;
-    /* text-decoration: underline; */
+    text-decoration: underline;
     height: 15vh;
-}
+} */
 
-.logOutBtn {
+/* .logOutBtn {
     position: absolute;
-
     left: 75%;
     top: 50%;
 }
@@ -35,4 +34,107 @@
     margin-left: 10%;
     font-family: 'Javanese Text';
     font-size: 18px;
+} */
+
+/* Side Nav Style */
+
+.newnav{
+    height: 100vh;
+    width: 300px;
+    z-index: 9999 !important;
 }
+
+.new-nav-div{
+    position: relative;
+    width: 300px;
+}
+
+.nav-button-on{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 40px;
+    width: 40px;
+    z-index: 9999;
+    transform: translateX(smooth);
+}
+
+.nav-button-off{
+    position: absolute;
+    top: 10px;
+    right: -45px;
+    height: 40px;
+    width: 40px;
+    z-index: 9999;
+    transform: translateX(smooth);
+}
+
+.slide {
+    max-width: 300px; 
+    width: 0; 
+    opacity: 0;
+    animation-name: slide-right; 
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards; 
+  }
+
+  @keyframes slide-right {
+    from {
+      width: 0; 
+      opacity: 0;
+    }
+    to {
+      width: 300px;
+      opacity: 1;
+    }
+  }
+
+  .footer{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+/* .border-bottom{
+    border-bottom: 1px solid white;
+} */
+/* a{
+    text-decoration: none !important;
+    color: white !important;   
+    font-weight: 500;
+    padding: 10px 0;
+} */
+/* a:hover{
+    color: #37B3F9 !important;
+}
+.footer{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+} */
+/* .dropdown-menu-dark{
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+.dropdown-toggle::before{
+    display: none;
+} */
+/* .sidebar-dropdown .dropdown-item{
+   padding: 3px 0;
+}
+.sidebar-dropdown .dropdown-item:hover{
+    background-color: transparent;
+}
+.nav-dropdown::after{
+    display: inline-block !important;
+    margin-right: 0.255em !important;
+    vertical-align: 0.005em !important;
+    content: "" !important;
+    border-top: 0.3em solid !important;
+    border-right: 0.3em solid transparent !important;
+    border-bottom: 0 !important;
+    border-left: 0.3em solid transparent !important;
+} */

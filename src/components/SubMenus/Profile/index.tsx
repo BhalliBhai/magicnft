@@ -27,6 +27,7 @@ import TitleIcon from '@mui/icons-material/Title';
 import ArticleIcon from '@mui/icons-material/Article';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { Link } from 'react-router-dom';
 
 
 const uploadPhotoTypes = ['JPG', 'PNG', 'GIF'];
@@ -173,64 +174,39 @@ const Profile = () => {
     }, []);
 
     return (
-        <div style={{ width: '100%', height: '100vh', backgroundColor: ' rgba(0, 0, 0, 20%) ' }} >
-            <Card className='left-div' sx={{  position: 'absolute', left: (showEditPage? '4%' : '27.5%') , top: '12vh' }}>
+        <div className='' style={{ width: '100%', minHeight:'128vh', background: '#3F3F3F' }} >
+            <Card className='left-div p-4' sx={{  position: 'absolute', left: (showEditPage? '4%' : '27.5%') , top: '5vh' }}>
+                <div className='pview pb-3'>
                 <img
-                    className='profile-photo'
-                    src={profileDatas.profilePhoto} />
-
-                <Avatar
-                    className='cover-photo'
-                    alt='Remy Sharp'
+                    className='cover-photo mb-5'
                     src={profileDatas.coverPhoto}
+                     />
+                <Avatar
+                    className='profile-photo'
+                    alt='Remy Sharp'
+                    src={profileDatas.profilePhoto}
                 />
-                <div className='main-name'>
-                    {profileDatas.name}
+
+                <div className="pview-name mt-5">
+                    <h3 className="text-center text-white mb-0">{profileDatas.name}</h3>
+                    <p className="text-center text-white mb-0">{profileDatas.title}</p>
+                    <p className="text-center text-white">{profileDatas.bio}</p>
                 </div>
-                <div className='main-title'>
-                    {profileDatas.title}
+                <div className="web-links px-4 mb-2">
+                    <a className="btn btn-dark w-100 my-2" href="http://" target="_blank" rel="noopener noreferrer"><LinkIcon className='me-2' />Page 1 / Name</a>
+                    <a className="btn btn-dark w-100 my-2" href="http://" target="_blank" rel="noopener noreferrer"><LinkIcon className='me-2' />Page 2 / Name</a>
+                    <a className="btn btn-dark w-100 my-2" href="http://" target="_blank" rel="noopener noreferrer"><LinkIcon className='me-2' />Page 3 / Name</a>
                 </div>
-                <div className='main-story'>
-                    {profileDatas.bio}
+                        
                 </div>
-                <div className='pagebuttons-container'>
-                    <Button
-                        className='page-buttons'
-                        variant='contained'
-                        color='info'
-                        startIcon={<LinkIcon />
-                        }>
-                        Page 1 / Name
-                    </Button>
-                    <Button
-                        className='page-buttons'
-                        variant='contained'
-                        color='info'
-                        startIcon={<LinkIcon />
-                        }>
-                        Page 2 / Name
-                    </Button>
-                    <Button
-                        className='page-buttons'
-                        variant='contained'
-                        color='info'
-                        startIcon={<LinkIcon />}>
-                        Page 3 / Name
-                    </Button>
+                <div className="text-end mt-4">
+                    <Button onClick={() => setShowEditPage(true)} className="bg-dark text-white px-5">< EditIcon className='me-2' /> Edit</Button>
                 </div>
-                <Button
-                    className='editbutton'
-                    variant='contained'
-                    color='warning'
-                    startIcon={< EditIcon />}
-                    onClick={() => setShowEditPage(true)}
-                >
-                    Edit
-                </Button>
             </Card>
             {showEditPage ?
                 (
-                    <Card className='right-div'>
+                    <Card className='right-div p-4' sx={{  position: 'absolute', top:'5vh' }}>
+                        
                         <Backdrop
                             sx={{
                                 color: '#fff',
@@ -242,22 +218,23 @@ const Profile = () => {
                             <CircularProgress color="inherit" />
                         </Backdrop>
                         <Box className='profile-name'>
-                            <FontDownloadIcon className='nameIcon' />
+                        {/* <FontDownloadIcon className='nameIcon' /><br /> */}
+                            <p className='text-white fw-bold'>Name</p>
                             <Input
                                 placeholder='Input your profile name'
                                 onChange={handleProfileNameChange}
                                 value={profileName}
                                 error
-                                sx={{ color: 'rgb(255, 255, 255)', width: '92%' }}
+                                className='input-style px-2 py-1'
                             />
                         </Box>
                         <>
                             <div className='profile-text'>Cover Photo (For Background)</div>
-                            <FileUploader
+                            <FileUploader className="input-file"
                                 multiple={false}
                                 handleChange={handleProfilePhotoUpload}
                                 name='file'
-                                types={uploadPhotoTypes}
+                                types={uploadPhotoTypes}  
                             />
                             <p className='profile-status'>
                                 {profilePhotoFile ?
@@ -266,15 +243,16 @@ const Profile = () => {
                             </p>
                         </>
                         <Box className='profile-title'>
-                            <TitleIcon className='titleIcon' />
-                            <Input
+                            {/* <TitleIcon className='titleIcon' /> */}
+                            <p className='text-white fw-bold'>Title</p>
+                            <Input className="input-style px-2 py-1"
                                 placeholder='Input title Ex.Travel Vlogger'
                                 onChange={handleProfileTitleChange}
                                 value={profileTitle}
                                 error
                                 sx={{
                                     color: 'rgb(255, 255, 255)',
-                                    width: '92%'
+                                    width: '100%'
                                 }}
                             />
                         </Box>
@@ -285,6 +263,12 @@ const Profile = () => {
                                 handleChange={handleCoverPhotoUpload}
                                 name='file'
                                 types={uploadPhotoTypes}
+                                sx={{
+                                    color: 'rgb(255, 255, 255)',
+                                    width: '100%',
+                                    backgroundColor:'#3F3F3F',
+
+                                }}
                             />
                             <p className='cover-status'>
                                 {coverPhotoFile ?
@@ -293,8 +277,9 @@ const Profile = () => {
                             </p>
                         </>
                         <Box className='profile-bio'>
-                            <ArticleIcon className='bioIcon' />
-                            <Input
+                            {/* <ArticleIcon className='bioIcon' /> */}
+                            <p className='text-white fw-bold'>Bio</p>
+                            <Input className="input-style px-2 py-1"
                                 placeholder='Share your story with your community.... '
                                 onChange={handleProfileBioChange}
                                 value={profileBio}
@@ -303,12 +288,13 @@ const Profile = () => {
                                 error
                                 sx={{
                                     color: 'rgb(255, 255, 255)',
-                                    width: '92%'
+                                    width: '100%'
                                 }}
                             />
                         </Box>
+                        <div className=" d-flex justify-content-between">
                         <Button
-                            className='savebutton'
+                            className='btn btn-dark bg-dark px-5'
                             variant='contained'
                             startIcon={< PlaylistAddCheckIcon />}
                             onClick={onSaveBtnPressed}
@@ -316,7 +302,7 @@ const Profile = () => {
                             Save
                         </Button>
                         <Button
-                            className='cancelbutton'
+                            className='btn btn-dark px-5'
                             variant='contained'
                             color='error'
                             startIcon={< CancelIcon />}
@@ -324,7 +310,8 @@ const Profile = () => {
                         >
                             Cancel
                         </Button>
-
+                        </div>
+                        
                     </Card>
                 )
 

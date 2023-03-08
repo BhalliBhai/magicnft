@@ -44,6 +44,9 @@ let SiteService = class SiteService {
             tempSite.siteDescription = resetDataDto.siteDescription;
             tempSite.siteThumbnail = resetDataDto.siteThumbnail;
             tempSite.published = resetDataDto.published;
+            tempSite.tokenGate = resetDataDto.tokenGate;
+            tempSite.chainIds = resetDataDto.chainIds;
+            console.log('tempsite', tempSite);
             return yield tempSite.save();
         });
     }
@@ -71,6 +74,7 @@ let SiteService = class SiteService {
     getInfo() {
         return __awaiter(this, void 0, void 0, function* () {
             const jsonData = yield this.siteModel.find({});
+            console.log('my site data', jsonData);
             return jsonData;
         });
     }

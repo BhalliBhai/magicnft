@@ -11,26 +11,16 @@
 
 .publishPanel {
     display: flex;
-
     width: 100%;
     height: 8vh;
-
-    box-sizing: border-box;
-    flex-shrink: 0;
     position: fixed;
     z-index: 1100;
-    top: 0px;
-    left: auto;
-    right: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 8px 16px;
-    transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    box-shadow: none;
-    backdrop-filter: blur(30px);
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.2);
-    border-width: 0px 0px thin;
-    background: rgba(0, 0, 0, 0.2);
-    color: rgb(45, 56, 67);
+    background: rgba(0, 0, 0);
+    color: #FFFFFF;
 }
 
 .forDrag {
@@ -47,3 +37,281 @@
     padding: 5vh 5% 5vh 5%;
 
 }
+
+.input-edit-page .form-control {
+    outline: none;
+    width: 100% !important;
+}
+
+.input-edit-page .form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root {
+    color: white !important;
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+    color: white !important;
+    background-color: #3F3F3F !important;
+    border-radius: 5px;
+    border: none;
+    padding: 5px !important;
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input::before {
+    display: none !important;
+}
+
+.kiHXWb {
+    background: #3F3F3F !important;
+}
+
+.css-8q2m5j-MuiInputBase-root-MuiInput-root {
+    color: white !important;
+    background-color: #3F3F3F !important;
+    border-radius: 5px;
+    padding: 5px !important;
+}
+
+.editPage-url-div {
+    border: none;
+    border-radius: 5px;
+}
+
+.editPage-url-div::-webkit-scrollbar {
+    width: 1px;
+}
+
+.editPage-url-div::-webkit-scrollbar-track {
+    background: transparent #3F3F3F;
+}
+
+.editPage-url-div::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+    border: 3px solid #3F3F3F;
+}
+
+.scroll-bar {
+    overflow-y: scroll !important;
+}
+
+.scroll-bar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+    border: 5px solid #3F3F3F;
+}
+
+.kiHXWb {
+    border: none !important;
+}
+
+.kiHXWb>svg path {
+    fill: white !important;
+    color: white !important;
+}
+
+.kiHXWb>.fVfcRr>span {
+    color: white !important;
+}
+
+.css-1i8lvs-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
+    background-color: #04D218D4 !important;
+}
+
+.css-1i8lvs-MuiButtonBase-root-MuiSwitch-switchBase {
+    background-color: rgb(100, 100, 100) !important;
+}
+.css-8atqhb .kiHXWb>.fVfcRr>span {
+    color: white !important;
+}
+
+.input-file .kiHXWb>svg path {
+    fill: rgb(0, 0, 0) !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+.input-file .kiHXWb{
+    background: #D9D9D9 !important;
+}
+.input-file .kiHXWb>.fVfcRr>span {
+    color: black !important;
+}
+
+.css-jsexje-MuiSwitch-thumb {
+    height: 10px !important;
+    width: 10px !important;
+}
+
+.MuiSwitch-root {
+    height: 28px !important;
+    width: 48px !important;
+    border-radius: 20px;
+    background: #3f3f3f;
+    padding: 0;
+    margin: 10px 20px !important;
+}
+
+.MuiSwitch-root.Mui-checked {
+    background-color: #04D218D4 !important;
+}
+
+.MuiSwitch-switchBase {
+    background-color: rgb(100, 100, 100) !important;
+    box-shadow: none !important;
+}
+
+.MuiSwitch-thumb {
+    height: 10px !important;
+    width: 10px !important;
+}
+
+.css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root {
+    color: white !important;
+}
+
+.uploaded-files::-webkit-scrollbar {
+    width: 8px;
+}
+
+.uploaded-files::-webkit-scrollbar-track {
+    background: transparent #3F3F3F;
+}
+
+.uploaded-files::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+    border: 2px solid #3F3F3F;
+}
+
+.add-text-field::-webkit-scrollbar {
+    width: 8px;
+}
+
+.add-text-field::-webkit-scrollbar-track {
+    background: transparent #3F3F3F;
+}
+
+.add-text-field::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+    border: 2px solid #3F3F3F;
+}
+
+/* text field-editor style   */
+
+ .ql-toolbar.ql-snow {
+    border: none;
+    border-bottom: 1px solid black;
+}
+/*
+.ql-toolbar.ql-snow .ql-fill {
+    color: white !important;
+}
+
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+    background-color: #000000 !important;
+    border-radius: 5px !important;
+    border: none;
+}
+
+.ql-snow .ql-editor h1 {
+    color: white;
+}
+
+.ql-snow .ql-stroke {
+    color: white !important;
+    stroke: white !important;
+}
+
+.ql-snow .ql-picker {
+    color: rgb(255, 255, 255) !important;
+}
+
+.ql-snow .ql-fill,
+.ql-snow .ql-stroke .ql-fill {
+    color: white !important;
+    fill: white !important;
+} */
+
+.ql-container.ql-snow {
+    border: none !important;
+}
+
+
+.links-prev-dragable::-webkit-scrollbar {
+    width: 8px;
+}
+
+.links-prev-dragable::-webkit-scrollbar-track {
+    background: transparent #3F3F3F;
+}
+
+.links-prev-dragable::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+    border: 2px solid #3F3F3F;
+}
+
+input.form-control:focus{
+    box-shadow: none;
+    border: none;
+}
+
+input.input-bg {
+    background-color: #D9D9D9;
+    color: black;
+}
+input.input-bg:focus{
+    background-color: #D9D9D9;
+    color: black;
+    outline: none;
+    box-shadow: none;
+}
+
+input.input-bg::placeholder {
+    color: black;
+    opacity: 0.7;
+}
+
+input.input-bg:-ms-input-placeholder {
+    color: black;
+}
+
+/* input border on focus  */
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+    border: none !important;
+}
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+    border: none !important;
+}
+/* Gallery tabs bottom line  */
+.css-1aquho2-MuiTabs-indicator{
+    background-color: white !important;
+}
+
+
+
+
+
+
+/* 
+<div className="input-edit-page w-100">
+    <label htmlFor="name" className="form-label fw-bold mb-1">Name</label>
+    <input type="text" className="form-control" id="name"
+    onChange={handlePageNameChange}
+    value={pageName}
+    />
+</div>
+*/

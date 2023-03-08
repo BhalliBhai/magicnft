@@ -17,6 +17,7 @@ const path_1 = require("path");
 const sites_module_1 = require("./sites/sites.module");
 const tiles_module_1 = require("./tiles/tiles.module");
 const profile_module_1 = require("./profile/profile.module");
+console.log(process.env.MONGO_URI);
 let AppModule = class AppModule {
 };
 AppModule = __decorate([

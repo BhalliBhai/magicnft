@@ -9,7 +9,40 @@
     left: 50%;
     top: 13vh;
     width: 48.5%;
-    height: 94vh;
-
+    height: 85vh;
     padding: 5vh 5% 5vh 5%;
+    background: '#2F2F2F';
+    border-radius: 10px;
+}
+.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root{
+    background: #3F3F3F;
+    border-radius: 10px !important;
+}
+.css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input{
+    color: white !important;
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root{
+    color: white !important;
+}
+
+.css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input {
+    overflow-y: scroll !important;
+}
+
+.css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input::-webkit-scrollbar {
+    width: 5px;
+}
+
+.css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+    border: 5px solid #3F3F3F;
+}
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+    color: white !important;
 }

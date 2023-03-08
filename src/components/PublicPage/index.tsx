@@ -136,27 +136,32 @@ const imageFitBlurred = {
 
 const add_Gallery_LinksModalStyle = {
     position: 'absolute' as 'absolute',
-    top: '5vh',
+    top: '12vh',
     left: '32%',
     width: '37%',
     minHeight: '57vh',
-    maxHeight: '90vh',
-    bgcolor: 'rgba( 255, 255, 255, 70%)',
+    maxHeight: '500px',
+    bgcolor: 'rgba( 0, 0, 0, 70%)',
     border: '2px solid #000',
     boxShadow: 24,
+    color:'#ffffff',
+    borderRadius: 3,
     p: 4,
 };
 
 const add_Img_Audio_VideoModalStyle = {
     position: 'absolute' as 'absolute',
-    top: '16vh',
+    top: '12vh',
     left: '32%',
     width: '37%',
     minHeight: '57vh',
-    maxHeight: '90vh',
-    bgcolor: 'rgba( 255, 255, 255, 70%)',
+    maxHeight: '500px',
+    bgcolor: 'rgba( 0, 0, 0, 70%)',
     border: '2px solid #000',
+    overflowY: 'scroll',
     boxShadow: 24,
+    color:'#ffffff',
+    borderRadius: 3,
     p: 4,
 };
 
@@ -166,37 +171,41 @@ const add_Instant_ModalStyle = {
     left: '32%',
     width: '37%',
     minHeight: '32vh',
-    maxHeight: '37vh',
-    bgcolor: 'rgba( 255, 255, 255, 70%)',
+    maxHeight: '60vh',
+    bgcolor: 'rgba( 0, 0, 0, 70%)',
     border: '2px solid #000',
     boxShadow: 24,
+    borderRadius: 5,
     p: 4,
 };
 
 const add_Text_ModalStyle = {
     position: 'absolute' as 'absolute',
-    top: '16vh',
+    top: '10vh',
     left: '30%',
     width: '37%',
     minHeight: '40vh',
     maxHeight: '80vh',
-    bgcolor: 'rgba( 255, 255, 255, 70%)',
+    bgcolor: 'rgba( 0, 0, 0, 70%)',
     border: '2px solid #000',
     boxShadow: 24,
+    borderRadius: 5,
     p: 4,
 };
 
 
 const edit_Page_ModalStyle = {
     position: 'absolute' as 'absolute',
-    top: '16vh',
+    top: '12vh',
     left: '30%',
     width: '38.5%',
     minHeight: '40vh',
-    maxHeight: '80vh',
-    bgcolor: 'rgba( 255, 255, 255, 70%)',
+    maxHeight: '500px',
+    bgcolor: 'rgba( 0, 0, 0, 70%)',
     border: '2px solid #000',
+    color:'#fff',
     boxShadow: 24,
+    borderRadius: 3,
     p: 4,
 };
 
@@ -210,6 +219,7 @@ const publish_Box_ModalStyle = {
     bgcolor: 'rgba( 0, 0, 0, 30%)',
     border: '2px solid #000',
     boxShadow: 24,
+    borderRadius: 5,
     p: 4,
 };
 
@@ -1649,32 +1659,38 @@ const renderNotConnected = () : JSX.Element => (
                 >
                     {/* < Resizable height = { } */}
                     <Card
-                        className={`${selectedItem == 200 && 'forDrag'}`}
+                        className={`${selectedItem == 200 && 'forDrag'} `}
                         style={{
                             position: 'absolute',
-                            width: '21%',
+                            width: '24%',
                             minHeight: '20vh',
                             maxHeight: '60vh',
                             left: '40%',
-                            top: '30%'
+                            top: '30%',
+                            background: 'rgb(0,0,0,70%)',
+                            borderRadius:'10px',
                         }}>
                         <List
+                            className='links-prev-dragable'
                             sx={{
                                 width: '100%',
                                 maxHeight: '50vh',
-                                bgcolor: 'background.paper',
-                                overflowY: 'scroll'
+                                // bgcolor: 'rgb(0,0,0,70%)',
+                                overflowY: 'scroll',
+                                borderBottom:'1px solid #fff'
                             }}>
                             {allLinksData.normal.map((linkItem: any, linkIndex: any) => {
                                 return (
-                                    <ListItem>
+                                    <ListItem
+                                    className='py-1 m-0'
+                                    >
                                         <HtmlTooltip title={<React.Fragment>
                                             Connect to <em>{linkItem.linkUrl}</em>.
                                         </React.Fragment>}>
-                                            <a
+                                            <a 
                                                 target="_blank"
                                                 href={linkItem.linkUrl}>
-                                                <UrlListItems>{linkItem.linkName}</UrlListItems>
+                                                <UrlListItems className='text-white'>{linkItem.linkName}</UrlListItems>
                                             </a>
                                         </HtmlTooltip>
                                     </ListItem>)
@@ -1693,8 +1709,9 @@ const renderNotConnected = () : JSX.Element => (
                                 href={allLinksData.social.email} >
                                 <GoogleSquareFilled
                                     style={{
-                                        color: 'action.active',
-                                        fontSize: '22px'
+                                        // color: 'action.active',
+                                        fontSize: '22px',
+                                        color:'rgb(255, 255, 255)'
                                     }} />
                             </Button>
                         </HtmlTooltip>
@@ -1711,8 +1728,9 @@ const renderNotConnected = () : JSX.Element => (
                                 href={allLinksData.social.facebook} >
                                 <FacebookFilled
                                     style={{
-                                        color: 'action.active',
-                                        fontSize: '22px'
+                                        // color: 'action.active',
+                                        fontSize: '22px',
+                                        color:'rgb(255, 255, 255)'
                                     }} />
                             </Button>
                         </HtmlTooltip>
@@ -1729,8 +1747,9 @@ const renderNotConnected = () : JSX.Element => (
                                 href={allLinksData.social.twitter} >
                                 <TwitterOutlined
                                     style={{
-                                        color: 'action.active',
-                                        fontSize: '22px'
+                                        // color: 'action.active',
+                                        fontSize: '22px',
+                                        color:'rgb(255, 255, 255)'
                                     }} />
                             </Button>
                         </HtmlTooltip>
@@ -1747,8 +1766,9 @@ const renderNotConnected = () : JSX.Element => (
                                 href={allLinksData.social.instagram} >
                                 <InstagramFilled
                                     style={{
-                                        color: 'action.active',
-                                        fontSize: '22px'
+                                        // color: 'action.active',
+                                        fontSize: '22px',
+                                        color:'rgb(255, 255, 255)'
                                     }} />
                             </Button>
                         </HtmlTooltip>
@@ -1765,8 +1785,9 @@ const renderNotConnected = () : JSX.Element => (
                                 href={allLinksData.social.linkedin} >
                                 <LinkedinFilled
                                     style={{
-                                        color: 'action.active',
-                                        fontSize: '22px'
+                                        // color: 'action.active',
+                                        fontSize: '22px',
+                                        color:'rgb(255, 255, 255)'
                                     }} />
                             </Button>
                         </HtmlTooltip>
@@ -2156,8 +2177,9 @@ const renderNotConnected = () : JSX.Element => (
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={edit_Page_ModalStyle}>
+                <Box className='scroll-bar' sx={edit_Page_ModalStyle}>
                     <Typography
+                    className='text-white pe-4'
                         id="modal-modal-title"
                         variant="h6"
                         component="h2"
@@ -2165,6 +2187,7 @@ const renderNotConnected = () : JSX.Element => (
                         Edit Page
                         <Fab
                             sx={{ width: '50%', ml: 20 }}
+                            className='bg-dark rounded ms-5'
                             variant="extended"
                             size="medium"
                             color="primary"
@@ -2172,6 +2195,7 @@ const renderNotConnected = () : JSX.Element => (
                             onClick={onSaveEditPage}
                         >
                             <DoneIcon
+                            
                                 sx={{ mr: 1 }} />
                             Save
                         </Fab>
@@ -2179,7 +2203,7 @@ const renderNotConnected = () : JSX.Element => (
                     </Typography>
                     <Typography
                         id="modal-modal-description"
-                        sx={{ my: 3 }}>
+                        sx={{ my: 1 }}>
                         <Backdrop
                             sx={{
                                 color: '#fff',
@@ -2192,39 +2216,41 @@ const renderNotConnected = () : JSX.Element => (
                         </Backdrop>
                         <Box
                             sx={{
-                                display: 'flex',
-                                alignItems: 'flex-end',
-                                width: '98%',
-                                mb: 3
+                                mb: 2,
                             }}>
-                            <DriveFileRenameOutlineIcon
-                                sx={{
-                                    mr: 2,
-                                    my: 0.5
-                                }} />
-                            <TextField
-                                id="page-name"
-                                label="Name"
-                                variant="standard"
-                                sx={{ width: '100%' }}
+                            
+                            <div className="input-edit-page w-100">
+                                <label htmlFor="name" className="form-label fw-bold mb-1">Name</label>
+                                <input type="text" className="form-control" id="name"
                                 onChange={handlePageNameChange}
-                                value={pageName} />
+                                value={pageName}
+                                />
+                            </div>
+                            
                         </Box>
                         <Card
+                        className='mt-0 mb-4'
                             style={{
-                                marginBottom: '3vh',
-                                textIndent: '2%'
+                                textIndent: '2%',
+                                color:'#fff',
+                                background:'transparent'
+                                
                             }}>
-                            <strong>URL: </strong>
-                            {window.location.pathname + window.location.search}
-                            <Button
+                            <strong className='bg-transparent'>URL: </strong>
+                            <Button className='mb-1 mx-3 rounded'
                                 onClick={() => {
                                     navigator.clipboard.writeText(
-                                        window.location.pathname + window.location.search);
+                                        window.location.pathname+window.location.search);
                                     handleSuccessClick();
                                 }}>
                                 <ContentCopyIcon />
                             </Button>
+                            <br />
+                            <div className="editPage-url-div"
+                            style={{background:'#3F3F3F',overflowX:'scroll',}}
+                            >
+                            {`${window.location.pathname}${window.location.search}`}
+                            </div>                            
                         </Card>
                         <FileUploader
                             multiple={false}
@@ -2232,16 +2258,25 @@ const renderNotConnected = () : JSX.Element => (
                             name="file"
                             types={uploadImageFileTypes}
                         />
-                        <p
+                        <p  className='mb-3'
                             style={{
                                 color: 'action.active',
-                                marginTop: '1vh'
+                                
+                            
                             }}>
                             {thumbnailFile ?
-                                `File name: ${thumbnailFile.name}` :
-                                "No files uploaded yet"}
+                            `File name: ${thumbnailFile.name}` :
+                            "No files uploaded yet"}
                         </p>
-                        <TextField
+
+                        <div className="input-edit-page mb-3 p-0 w-100">
+                            <label htmlFor="standard-multiline-static" className="form-label fw-bold mb-1">Description</label>
+                            <input type="text" className="form-control" id="standard-multiline-static"
+                            onChange={handlePageDescriptionChange}
+                            value={pageDescription}
+                            />
+                        </div>
+                        {/* <TextField
                             id="standard-multiline-static"
                             label="Description"
                             multiline
@@ -2251,18 +2286,26 @@ const renderNotConnected = () : JSX.Element => (
                             sx={{ width: '98%' }}
                             onChange={handlePageDescriptionChange}
                             value={pageDescription}
-                        />
-                        <TextField
+                        /> */}
+
+                        <div className="input-edit-page mb-3 p-0 w-100">
+                            <label htmlFor="standard-multiline-static" className="form-label fw-bold mb-1">Contract Address</label>
+                            <input type="text" className="form-control mb-0" id="standard-multiline-static"
+                            onChange={handleChainIdChange}
+                            value={chainIds}
+                            />
+                        </div>
+                        {/* <TextField
                             id="standard-multiline-static"
                             label="Contract Address"
                             multiline
                             rows={2}
                             defaultValue="" 
                             variant="standard"
-                            sx={{ width: '98%' }}
+                            sx={{ width: '98%', }}
                             onChange={handleChainIdChange}
                             value={chainIds}
-                        />
+                        /> */}
                         <Box
                         sx={{
                             display: 'flex',
@@ -2270,8 +2313,8 @@ const renderNotConnected = () : JSX.Element => (
                             width: '98%',
                             mb: 3
                         }}>
-                            <p > Token Gate</p>
-                            <Switch {...label} 
+                            <p className='pt-2'> Token Gate</p>
+                            <Switch className=' ' {...label} 
                                 onChange={onTokenGatePressed}
                             />
                         </Box>
@@ -2291,7 +2334,8 @@ const renderNotConnected = () : JSX.Element => (
                                 width: '80%',
                                 position: 'absolute',
                                 left: '10%',
-                                bottom: '5vh'
+                                bottom: '5vh',
+                               
                             }}>
                             <BottomNavigation
                                 showLabels
@@ -2299,15 +2343,17 @@ const renderNotConnected = () : JSX.Element => (
                                 onChange={(event, newValue) => {
                                     setNavActionValue(newValue);
                                 }}
-                            >
+                                className='bg-black rounded'
+                                >
                                 <HtmlTooltip
+                                    
                                     title={<React.Fragment>
                                         <Typography
                                             color="inherit">
                                             Add Image
                                         </Typography>
                                         You can add images on your site from
-                                        <em>{"upload file"}</em>.
+                                        <em>{" upload file"}</em>.
                                     </React.Fragment>}>
                                     <BottomNavigationAction
                                         label='Image'
@@ -2321,7 +2367,7 @@ const renderNotConnected = () : JSX.Element => (
                                             Add Gallery
                                         </Typography>
                                         You can add your own gallery with optional
-                                        <em>{"beautiful image flow."}</em>
+                                        <em>{" beautiful image flow."}</em>
                                     </React.Fragment>}>
                                     <BottomNavigationAction
                                         label='Gallery'
@@ -2335,7 +2381,7 @@ const renderNotConnected = () : JSX.Element => (
                                             Add Instant Embed
                                         </Typography>
                                         You can add
-                                        <em>{"social media posts"}</em>
+                                        <em>{" social media posts"}</em>
                                         with link.
                                     </React.Fragment>}>
                                     <BottomNavigationAction
@@ -2350,7 +2396,7 @@ const renderNotConnected = () : JSX.Element => (
                                             Add Audio
                                         </Typography>
                                         You can add
-                                        <em>{"song and voice"}</em>
+                                        <em>{" song and voice"}</em>
                                         to the site.
                                     </React.Fragment>}>
                                     <BottomNavigationAction
@@ -2365,7 +2411,7 @@ const renderNotConnected = () : JSX.Element => (
                                             Add Video
                                         </Typography>
                                         You can add
-                                        <em>{"video"}</em>
+                                        <em>{" video "}</em>
                                         to the site and enjoy it.
                                     </React.Fragment>}>
                                     <BottomNavigationAction
@@ -2380,7 +2426,7 @@ const renderNotConnected = () : JSX.Element => (
                                             Add Text
                                         </Typography>
                                         You can add
-                                        <em>{"description or writing"}</em>
+                                        <em>{" description or writing "}</em>
                                         to the site it.
                                     </React.Fragment>}>
                                     <BottomNavigationAction
@@ -2395,7 +2441,7 @@ const renderNotConnected = () : JSX.Element => (
                                             Add Links
                                         </Typography>
                                         You can add
-                                        <em>{"normal and social links"}</em>
+                                        <em>{" normal and social links "}</em>
                                         to the site it.
                                     </React.Fragment>}>
                                     <BottomNavigationAction
@@ -2418,7 +2464,7 @@ const renderNotConnected = () : JSX.Element => (
                                 <ForwardIcon color="primary" />
                             </React.Fragment>}>
                             <Fab
-                                color="primary"
+                                color="default"
                                 aria-label="add"
                                 style={{
                                     position: 'absolute',
@@ -2461,9 +2507,10 @@ const renderNotConnected = () : JSX.Element => (
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={add_Gallery_LinksModalStyle}>
+                <Box className='scroll-bar' sx={add_Gallery_LinksModalStyle}>
                     <Typography
                         id="modal-modal-title"
+                        className='text-white'
                         variant="h6"
                         component="h2"
                         sx={{ ml: 0 }}>
@@ -2473,6 +2520,7 @@ const renderNotConnected = () : JSX.Element => (
                                 width: '25%',
                                 ml: 7
                             }}
+                            className='bg-dark text-white'
                             variant="extended"
                             size="medium"
                             color="primary"
@@ -2486,6 +2534,7 @@ const renderNotConnected = () : JSX.Element => (
                                 width: '25%',
                                 ml: 3
                             }}
+                            className='bg-danger text-white'
                             variant="extended"
                             size="medium"
                             color="secondary"
@@ -2510,10 +2559,12 @@ const renderNotConnected = () : JSX.Element => (
                                     onChange={galleryHandleChange}
                                     aria-label="basic tabs example">
                                     <Tab
+                                    className='text-white'
                                         label="Images"
                                         {...a11yProps(0)}
                                         sx={{ width: '50%' }} />
                                     <Tab
+                                    className='text-white'
                                         label="Setting"
                                         {...a11yProps(1)}
                                         sx={{ width: '50%' }} />
@@ -2526,24 +2577,28 @@ const renderNotConnected = () : JSX.Element => (
                                 index={0}>
                                 <Box
                                     sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        width: '90%',
-                                        ml: 2
+                                        width: '100%',
                                     }}>
-                                    <input
+                                    <div className="mb-3 w-100">
+                                        <label htmlFor="galleryupload" className="form-label fw-bold">Upload File</label>
+                                        <input type="file" className="form-control input-bg" id="galleryupload" onChange={handleFileUpload} />
+                                    </div>
+                                    {/* <input className='form-control'
                                         type="file"
-                                        onChange={handleFileUpload} />
+                                        onChange={handleFileUpload} /> */}
                                 </Box>
                                 <Box
                                     sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
                                         width: '100%',
-                                        ml: 0,
-                                        my: 1
                                     }}>
-                                    <DriveFileRenameOutlineIcon
+                                    <div className="mb-3 w-100">
+                                        <label htmlFor="imgage-name" className="form-label fw-bold">Image Name</label>
+                                        <input type="text" className="form-control input-bg" id="imgage-name"
+                                         placeholder='Image Name'
+                                         onChange={onGalleryImageNameChange} />
+                                    </div>
+                                    {/* <DriveFileRenameOutlineIcon
+                                        className='text-white'
                                         sx={{
                                             color: 'action.active',
                                             mr: 2,
@@ -2554,17 +2609,20 @@ const renderNotConnected = () : JSX.Element => (
                                         label="Image Name"
                                         variant="standard"
                                         sx={{ width: '100%' }}
-                                        onChange={onGalleryImageNameChange} />
+                                        onChange={onGalleryImageNameChange} /> */}
                                 </Box>
                                 <Box
                                     sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
                                         width: '100%',
-                                        ml: 0,
-                                        marginBottom: '3vh'
                                     }}>
-                                    <HistoryEduOutlinedIcon
+                                    <div className="mb-3 w-100">
+                                        <label htmlFor="image-description" className="form-label fw-bold">Image Description</label>
+                                        <input type="text" className="form-control input-bg" id="image-description"
+                                         placeholder='Image Description'
+                                         onChange={onGalleryImageDescriptionChange} />
+                                    </div>
+                                    {/* <HistoryEduOutlinedIcon
+                                        className='text-white'
                                         sx={{
                                             color: 'action.active',
                                             mr: 2,
@@ -2575,26 +2633,33 @@ const renderNotConnected = () : JSX.Element => (
                                         label="Image Description"
                                         variant="standard"
                                         sx={{ width: '100%' }}
-                                        onChange={onGalleryImageDescriptionChange} />
+                                        onChange={onGalleryImageDescriptionChange} /> */}
                                 </Box>
                                 {galleryImageAvatar?.length > 0 ?
                                     (<Card
+                                    className='uploaded-files rounded'
                                         style={{
                                             marginTop: '3vh',
-                                            maxHeight: '33vh',
-                                            overflowY: 'scroll'
+                                            maxHeight: '25vh',
+                                            overflowY: 'scroll',
+                                            background: '#3F3F3F'
                                         }}>
                                         <List
+                                            className='' 
                                             component="nav"
                                             aria-label="main mailbox folders">
                                             {galleryImageAvatar.map((item: any, index: any) => {
                                                 return (
-                                                    <ListItem key={index}>
+                                                    <ListItem
+                                                        key={index}>
                                                         <ListItemAvatar>
                                                             <Avatar src={item.url} />
                                                         </ListItemAvatar>
-                                                        <ListItemText primary={item.name} />
+                                                        <ListItemText
+                                                        className='text-white'
+                                                        primary={item.name} />
                                                         <Fab
+
                                                             size="small"
                                                             color="inherit"
                                                             aria-label="deleteImage"
@@ -2640,44 +2705,49 @@ const renderNotConnected = () : JSX.Element => (
 
                             <TabPanel
                                 value={galleryMenuValue}
-                                index={1}>
+                                index={1}> 
                                 <Box
                                     sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        width: '90%'
+                                        width: '100%'
                                     }}>
-                                    <DriveFileRenameOutlineIcon
+                                    <div className="mb-3 w-100">
+                                        <label htmlFor="gallery-name" className="form-label fw-bold">Gallery Name</label>
+                                        <input type="text" className="form-control input-bg" id="gallery-name"
+                                        placeholder='Gallery Name'
+                                        onChange={handleGalleryNameChange}
+                                        value={galleryName} />
+                                    </div>
+                                    {/* <DriveFileRenameOutlineIcon
+                                        className='text-white'
                                         sx={{
                                             color: 'action.active',
                                             mr: 2,
                                             my: 0.5
                                         }} />
                                     <TextField
+                                        className='text-white'
                                         id="gallery-name"
                                         label="Gallery Name"
                                         variant="standard"
                                         sx={{ width: '100%' }}
                                         onChange={handleGalleryNameChange}
-                                        value={galleryName} />
+                                        value={galleryName} /> */}
                                 </Box>
-                                <WallpaperIcon
-                                    sx={{
-                                        color: 'action.active',
-                                        my: 4
-                                    }} />
+
                                 <FormControl
                                     sx={{
-                                        m: 2,
-                                        width: '85%',
-                                        my: 3
+                                        width: '100%',
+                                        mb: 3
                                     }}
                                     size="small">
-                                    <InputLabel
+                                    <label
+                                        className='text-white fw-bold mb-1'
                                         id="demo-select-small">
                                         Image Fit
-                                    </InputLabel>
+                                    </label>
                                     <Select
+                                        className='text-black'
+                                        style={{background:'#D9D9D9', borderRadius:'7px', outline:'none', border:'none'}}
                                         labelId="demo-select-small"
                                         id="demo-select-small"
                                         value={imageFitValue}
@@ -2689,34 +2759,24 @@ const renderNotConnected = () : JSX.Element => (
                                     </Select>
                                 </FormControl>
                                 <Box
-                                    sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        width: '90%'
-                                    }}>
-
-                                    <ColorLensOutlinedIcon
-                                        sx={{
-                                            color: 'action.active',
-                                            my: 0
-                                        }} />
-                                    <TextField
-                                        id="backColorInput"
-                                        label="BackgroundColor"
-                                        variant="standard"
-                                        sx={{
-                                            width: '40%',
-                                            ml: '5%'
-                                        }}
+                                    className='d-flex justify-content-between'>
+                                    <div className="">
+                                        <label htmlFor="backColorInput" className="form-label fw-bold">BackgroundColor</label>
+                                        <input type="text" className="form-control input-bg" id="backColorInput"
                                         onChange={handleEditBackColorChange}
                                         value={backColor} />
+                                    </div>
                                     <button
+                                        className='mt-4'
                                         onClick={onColorPickerPressed}
                                         style={{
                                             backgroundColor: `${backColor}`,
-                                            width: '7%',
-                                            height: '4vh',
-                                            marginLeft: '5%'
+                                            marginLeft: '2%',
+                                            width: '10%',
+                                            height: '43px',
+                                            borderRadius: '7px',
+                                            border: '1px solid white',
+                                        
                                         }}>
                                     </button>
                                     {displayColorPicker ? (
@@ -2737,6 +2797,7 @@ const renderNotConnected = () : JSX.Element => (
                                             <Checkbox
                                                 onChange={onAutoPlayChange}
                                                 icon={<AssignmentTurnedInOutlinedIcon
+                                                    className='text-white'
                                                     sx={{
                                                         color: 'action.active',
                                                         mr: 1
@@ -2748,37 +2809,42 @@ const renderNotConnected = () : JSX.Element => (
                                                     }} />}
                                                 name="checkedH"
                                                 defaultChecked />}
-                                        label={
+                                                label={
                                             <Typography
+                                                className='text-white'
                                                 variant="subtitle1"
                                                 component="h2"
                                                 color="action.active"
                                                 sx={{ m1: 2 }}>
                                                 Autoplay Gallery
                                             </Typography>}
-                                        sx={{ ml: -1, my: 3 }}
+                                        sx={{ ml: -1, my: 2 }}
                                     />
                                 </Box>
                                 {autoPlayValue ? <>
-                                    <AlarmAddOutlinedIcon
+                                    {/* <AlarmAddOutlinedIcon
+                                        className='text-white'
                                         sx={{
                                             color: 'action.active',
                                             my: 0
-                                        }} />
+                                        }} /> */}
                                     <FormControl
+                                        className='rounded mt-0'
+                                        
                                         sx={{
-                                            m: 2,
-                                            width: '85%',
-                                            my: -1
+                                            width: '100%',
                                         }}
                                         size="small">
-                                        <InputLabel
+                                        <label
+                                            className='text-white fw-bold mb-1'
                                             id="demo-select-small">
                                             Slide Timing
-                                        </InputLabel>
+                                        </label>
                                         <Select
+                                            className='text-black'
                                             labelId="demo-select-small"
                                             id="demo-select-small"
+                                            style={{background:'#D9D9D9', borderRadius:'7px'}}
                                             value={slideTimeValue}
                                             label="Slide Timing"
                                             onChange={slideTimeHandleChange}
@@ -2802,10 +2868,11 @@ const renderNotConnected = () : JSX.Element => (
                 onClose={onCloseImagePressed}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
-            >
+                >
 
-                <Box sx={add_Img_Audio_VideoModalStyle}>
+                <Box className='scroll-bar' sx={add_Img_Audio_VideoModalStyle}>
                     <Typography
+                        className='text-white'
                         id="modal-modal-title"
                         variant="h6"
                         component="h2"
@@ -2816,6 +2883,7 @@ const renderNotConnected = () : JSX.Element => (
                                 width: '25%',
                                 ml: 7
                             }}
+                            className='bg-dark'
                             variant="extended"
                             size="medium"
                             color="primary"
@@ -2828,6 +2896,7 @@ const renderNotConnected = () : JSX.Element => (
                             width: '25%',
                             ml: 3
                         }}
+                        className='bg-danger'
                             variant="extended"
                             size="medium"
                             color="secondary"
@@ -2853,12 +2922,19 @@ const renderNotConnected = () : JSX.Element => (
                         </Backdrop>
                         <Box
                             sx={{
-                                display: 'flex',
-                                alignItems: 'flex-end',
-                                width: '90%',
+                                width: '100%',
                                 mb: 3
                             }}>
-                            <DriveFileRenameOutlineIcon
+
+                            <div className="mb-3 w-100">
+                                <label htmlFor="oneimage-name" className="form-label fw-bold">Image Name</label>
+                                <input type="text" className="form-control input-bg" id="oneimage-name"
+                                placeholder='Image Name'
+                                onChange={handleOneImageNameChange}
+                                value={oneImageName} />
+                            </div>
+                            {/* <DriveFileRenameOutlineIcon
+                                className='text-white'
                                 sx={{
                                     color: 'action.active',
                                     mr: 2,
@@ -2870,35 +2946,47 @@ const renderNotConnected = () : JSX.Element => (
                                 variant="standard"
                                 sx={{ width: '100%' }}
                                 onChange={handleOneImageNameChange}
-                                value={oneImageName} />
+                                value={oneImageName} /> */}
                         </Box>
-                        <FileUploader
-                            multiple={false}
-                            handleChange={handleOneImageUpload}
-                            name="file"
-                            types={uploadImageFileTypes}
-                        />
-                        <p
-                            style={{
-                                color: 'action.active',
-                                marginTop: '1vh'
+                        <Box
+                            className='input-file'
+                            sx={{
+                                width: '100%',
                             }}>
-                            {oneImageUploadedFile ?
-                                `File name: ${oneImageUploadedFile.name}` :
-                                "No files uploaded yet"}
-                        </p>
+                            <FileUploader
+                                
+                                style={{background:'#D9D9D9'}}
+                                sx={{width: '95%',}}
+                                multiple={false}
+                                handleChange={handleOneImageUpload}
+                                name="file"
+                                types={uploadImageFileTypes}
+                            />
+                            <p  className='text-white'
+                                style={{
+                                    color: 'action.active',
+                                    marginTop: '1vh',
+                                }}>
+                                {oneImageUploadedFile ?
+                                    `File name: ${oneImageUploadedFile.name}` :
+                                    "No files uploaded yet"}
+                            </p>
+                        </Box>
+                        
                         <Box
                             sx={{
                                 display: 'flex',
                                 alignItems: 'flex-end',
                                 width: '90%',
-                                position: 'absolute',
-                                top: '33vh'
+                                mb: 2
+                                // position: 'absolute',
+                                // top: '35vh'
                             }}>
                             <FormControlLabel
                                 control={<Checkbox
                                     onChange={onOptionalLinkChange}
                                     icon={<AssignmentTurnedInOutlinedIcon
+                                        className='text-white'
                                         sx={{
                                             color: 'action.active',
                                             mr: 1
@@ -2913,13 +3001,14 @@ const renderNotConnected = () : JSX.Element => (
                                     name="checkedH"
                                     defaultChecked />}
                                 label={<Typography
+                                    className='text-white'
                                     variant="subtitle1"
                                     component="h2"
                                     color="action.active"
                                     sx={{ m1: 2 }}>
                                     Add Link To Image
                                 </Typography>}
-                                sx={{ ml: -1, my: 3 }}
+                                
                             />
                         </Box>
                         {showOptionalLink ?
@@ -2927,11 +3016,17 @@ const renderNotConnected = () : JSX.Element => (
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'flex-end',
-                                    width: '90%',
-                                    position: 'absolute',
-                                    top: '42vh'
+                                    width: '100%',
                                 }}>
-                                <LinkOutlinedIcon
+                                <div className="mb-3 w-100">
+                                    <label htmlFor="linkUrl" className="form-label fw-bold">Enter a URL</label>
+                                    <input type="text" className="form-control input-bg" id="linkUrl"
+                                    placeholder='Enter a URL'
+                                    onChange={handleOptionalLinkChange}
+                                    value={optionalLinkUrl} />
+                                </div>
+                                {/* <LinkOutlinedIcon
+                                    className='text-white'
                                     sx={{
                                         color: 'action.active',
                                         mr: 2,
@@ -2943,7 +3038,7 @@ const renderNotConnected = () : JSX.Element => (
                                     variant="standard"
                                     sx={{ width: '80%' }}
                                     onChange={handleOptionalLinkChange}
-                                    value={optionalLinkUrl} />
+                                    value={optionalLinkUrl} /> */}
                             </Box>
                             : <></>}
                     </Typography>
@@ -2959,14 +3054,16 @@ const renderNotConnected = () : JSX.Element => (
                 aria-describedby="modal-modal-description"
             >
 
-                <Box sx={add_Img_Audio_VideoModalStyle}>
+                <Box className='scroll-bar' sx={add_Img_Audio_VideoModalStyle}>
                     <Typography
+                        className='text-white'
                         id="modal-modal-title"
                         variant="h6"
                         component="h2"
                         sx={{ ml: 0 }}>
                         ADD AUDIO
                         <Fab
+                            className='bg-dark'
                             sx={{
                                 width: '25%',
                                 ml: 7
@@ -2979,7 +3076,9 @@ const renderNotConnected = () : JSX.Element => (
                             <DoneIcon sx={{ mr: 1 }} />
                             Done
                         </Fab>
-                        <Fab sx={{
+                        <Fab
+                            className='bg-danger'
+                         sx={{
                             width: '25%',
                             ml: 3
                         }}
@@ -3008,12 +3107,21 @@ const renderNotConnected = () : JSX.Element => (
                         </Backdrop>
                         <Box
                             sx={{
-                                display: 'flex',
-                                alignItems: 'flex-end',
-                                width: '90%',
-                                mb: 3
+                                // display: 'flex',
+                                // alignItems: 'flex-end',
+                                // width: '95%',
+                                // mb: 3
                             }}>
-                            <DriveFileRenameOutlineIcon
+
+                            <div className="mb-4 w-100">
+                                <label htmlFor="audio-name" className="form-label fw-bold">Audio Name</label>
+                                <input type="text" className="form-control input-bg" id="audio-name"
+                                placeholder='Audio Name'
+                                onChange={handleAudioNameChange}
+                                value={audioName} />
+                            </div>
+                            {/* <DriveFileRenameOutlineIcon
+                                className='text-white'
                                 sx={{
                                     color: 'action.active',
                                     mr: 2,
@@ -3025,29 +3133,34 @@ const renderNotConnected = () : JSX.Element => (
                                 variant="standard"
                                 sx={{ width: '100%' }}
                                 onChange={handleAudioNameChange}
-                                value={audioName} />
+                                value={audioName} /> */}
                         </Box>
-                        <FileUploader
-                            multiple={false}
-                            handleChange={handleAudioUpload}
-                            name="file"
-                            types={uploadAudioFileTypes}
-                        />
-                        <p
-                            style={{
-                                color: 'action.active',
-                                marginTop: '1vh'
-                            }}>
-                            {audioUploadedFile ?
-                                `File name: ${audioUploadedFile.name}` :
-                                "No files uploaded yet"}
-                        </p>
+                        <Box
+                            className='input-file'
+                        >
+                            <FileUploader
+                                multiple={false}
+                                handleChange={handleAudioUpload}
+                                name="file"
+                                types={uploadAudioFileTypes}
+                            />
+                            <p
+                                style={{
+                                    color: 'action.active',
+                                    marginTop: '1vh'
+                                }}>
+                                {audioUploadedFile ?
+                                    `File name: ${audioUploadedFile.name}` :
+                                    "No files uploaded yet"}
+                            </p>
+                        </Box>
                         <Box sx={{
-                            display: 'flex',
-                            alignItems: 'flex-end',
-                            width: '90%',
-                            position: 'absolute',
-                            top: '33vh'
+                            mb: 2
+                            // display: 'flex',
+                            // alignItems: 'flex-end',
+                            // width: '95%',
+                            // position: 'absolute',
+                            // top: '33vh'
                         }}>
                             <FormControlLabel
                                 control={
@@ -3055,6 +3168,7 @@ const renderNotConnected = () : JSX.Element => (
                                         onChange={onOptionalAudioDescriptionChange}
                                         icon={
                                             <AssignmentTurnedInOutlinedIcon
+                                                className='text-white'
                                                 sx={{
                                                     color: 'action.active',
                                                     mr: 1
@@ -3070,25 +3184,27 @@ const renderNotConnected = () : JSX.Element => (
                                         defaultChecked />}
                                 label={
                                     <Typography
+                                        className='text-white'
                                         variant="subtitle1"
                                         component="h2"
                                         color="action.active"
                                         sx={{ m1: 2 }}>
                                         Add Description
                                     </Typography>}
-                                sx={{ ml: -1, my: 3 }}
+                                // sx={{ ml: -1, my: 3 }}
                             />
                         </Box>
                         {showOptionalAudioDescription ?
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    alignItems: 'flex-end',
-                                    width: '90%',
-                                    position: 'absolute',
-                                    top: '42vh'
-                                }}>
-                                <HistoryEduOutlinedIcon
+                            <Box>
+                                <div className="mb-2 w-100">
+                                    <label htmlFor="audioDescription" className="form-label fw-bold">Write description</label>
+                                    <input type="text" className="form-control input-bg" id="audioDescription"
+                                    placeholder='Write description'
+                                    onChange={handleAudioNameChange}
+                                    value={audioName} />
+                                </div>
+                                {/* <HistoryEduOutlinedIcon
+                                    className="text-white"
                                     sx={{
                                         color: 'action.active',
                                         mr: 2,
@@ -3100,7 +3216,7 @@ const renderNotConnected = () : JSX.Element => (
                                     variant="standard"
                                     sx={{ width: '80%' }}
                                     onChange={handleOptionalAudioDescriptionChange}
-                                    value={optionalAudioDescription} />
+                                    value={optionalAudioDescription} /> */}
                             </Box>
                             : <></>}
                     </Typography>
@@ -3116,14 +3232,16 @@ const renderNotConnected = () : JSX.Element => (
                 aria-describedby="modal-modal-description"
             >
 
-                <Box sx={add_Img_Audio_VideoModalStyle}>
+                <Box className='scroll-bar' sx={add_Img_Audio_VideoModalStyle}>
                     <Typography
+                        className='text-white'
                         id="modal-modal-title"
                         variant="h6"
                         component="h2"
                         sx={{ ml: 0 }}>
                         ADD VIDEO
                         <Fab
+                            className='bg-dark'
                             sx={{
                                 width: '25%',
                                 ml: 7
@@ -3137,6 +3255,7 @@ const renderNotConnected = () : JSX.Element => (
                             Done
                         </Fab>
                         <Fab
+                            className='bg-danger'
                             sx={{
                                 width: '25%',
                                 ml: 3
@@ -3166,12 +3285,20 @@ const renderNotConnected = () : JSX.Element => (
                         </Backdrop>
                         <Box
                             sx={{
-                                display: 'flex',
-                                alignItems: 'flex-end',
-                                width: '90%',
-                                mb: 3
+                                // display: 'flex',
+                                // alignItems: 'flex-end',
+                                // width: '95%',
+                                // mb: 3
                             }}>
-                            <DriveFileRenameOutlineIcon
+                                <div className="mb-4 w-100">
+                                    <label htmlFor="video-name" className="form-label fw-bold">Video Name</label>
+                                    <input type="text" className="form-control input-bg" id="video-name"
+                                    placeholder='Video Name'
+                                    onChange={handleVideoNameChange}
+                                    value={videoName} />
+                                </div>
+                            {/* <DriveFileRenameOutlineIcon
+                                className='text-white'
                                 sx={{
                                     color: 'action.active',
                                     mr: 2,
@@ -3183,30 +3310,35 @@ const renderNotConnected = () : JSX.Element => (
                                 variant="standard"
                                 sx={{ width: '100%' }}
                                 onChange={handleVideoNameChange}
-                                value={videoName} />
+                                value={videoName} /> */}
                         </Box>
-                        <FileUploader
-                            multiple={false}
-                            handleChange={handleVideoUpload}
-                            name="file"
-                            types={uploadVideoFileTypes}
-                        />
-                        <p
-                            style={{
-                                color: 'action.active',
-                                marginTop: '1vh'
-                            }}>
-                            {videoUploadedFile ?
-                                `File name: ${videoUploadedFile.name}` :
-                                "No files uploaded yet"}
-                        </p>
+                        <Box className='input-file'>
+                            <FileUploader
+                                multiple={false}
+                                handleChange={handleVideoUpload}
+                                name="file"
+                                types={uploadVideoFileTypes}
+                            />
+                            <p
+                                style={{
+                                    color: 'action.active',
+                                    marginTop: '1vh' 
+                                }}>
+                                {videoUploadedFile ?
+                                    `File name: ${videoUploadedFile.name}` :
+                                    "No files uploaded yet"}
+                            </p>
+
+                        </Box>
+                        
                         <Box
                             sx={{
-                                display: 'flex',
-                                alignItems: 'flex-end',
-                                width: '90%',
-                                position: 'absolute',
-                                top: '33vh'
+                                mb:2
+                                // display: 'flex',
+                                // alignItems: 'flex-end',
+                                // width: '90%',
+                                // position: 'absolute',
+                                // top: '33vh'
                             }}>
                             <FormControlLabel
                                 control={
@@ -3228,25 +3360,34 @@ const renderNotConnected = () : JSX.Element => (
                                         defaultChecked />}
                                 label={
                                     <Typography
+                                        className='text-white'
                                         variant="subtitle1"
                                         component="h2"
                                         color="action.active"
                                         sx={{ m1: 2 }}>
                                         Add Description
                                     </Typography>}
-                                sx={{ ml: -1, my: 3 }}
+                                // sx={{ ml: -1, my: 3 }}
                             />
                         </Box>
                         {showOptionalVideoDescription ?
                             <Box
                                 sx={{
-                                    display: 'flex',
-                                    alignItems: 'flex-end',
-                                    width: '90%',
-                                    position: 'absolute',
-                                    top: '42vh'
+                                    // display: 'flex',
+                                    // alignItems: 'flex-end',
+                                    // width: '95%',
+                                    // position: 'absolute',
+                                    // top: '42vh'
                                 }}>
-                                <HistoryEduOutlinedIcon
+                                <div className="mb-4 w-100">
+                                    <label htmlFor="audioDescription" className="form-label fw-bold">Write description</label>
+                                    <input type="text" className="form-control input-bg" id="audioDescription"
+                                    placeholder='Write description'
+                                    onChange={handleOptionalVideoDescriptionChange}
+                                    value={optionalVideoDescription} />
+                                </div>
+                                {/* <HistoryEduOutlinedIcon
+                                    className='text-white'
                                     sx={{
                                         color: 'action.active',
                                         mr: 2,
@@ -3258,7 +3399,7 @@ const renderNotConnected = () : JSX.Element => (
                                     variant="standard"
                                     sx={{ width: '80%' }}
                                     onChange={handleOptionalVideoDescriptionChange}
-                                    value={optionalVideoDescription} />
+                                    value={optionalVideoDescription} /> */}
                             </Box>
                             : <></>}
                     </Typography>
@@ -3273,14 +3414,16 @@ const renderNotConnected = () : JSX.Element => (
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={add_Gallery_LinksModalStyle}>
+                <Box className='scroll-bar' sx={add_Gallery_LinksModalStyle}>
                     <Typography
+                        className='text-white'
                         id="modal-modal-title"
                         variant="h6"
                         component="h2"
                         sx={{ ml: 0 }}>
                         ADD LINKS
                         <Fab
+                            className='bg-dark'
                             sx={{
                                 width: '25%',
                                 ml: 7
@@ -3294,6 +3437,7 @@ const renderNotConnected = () : JSX.Element => (
                             Done
                         </Fab>
                         <Fab
+                            className='bg-danger'
                             sx={{
                                 width: '25%',
                                 ml: 3
@@ -3322,10 +3466,12 @@ const renderNotConnected = () : JSX.Element => (
                                     onChange={linksMenuHandleChange}
                                     aria-label="basic tabs example">
                                     <Tab
+                                        className='text-white'
                                         label="Links"
                                         {...a11yProps(0)}
                                         sx={{ width: '50%' }} />
                                     <Tab
+                                        className='text-white'
                                         label="Social"
                                         {...a11yProps(1)}
                                         sx={{ width: '50%' }} />
@@ -3335,14 +3481,16 @@ const renderNotConnected = () : JSX.Element => (
                             <TabPanel
                                 value={linksMenuValue}
                                 index={0}>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        width: '90%',
-                                        mb: 1
-                                    }}>
-                                    <DriveFileRenameOutlineIcon
+                                <Box>
+                                    <div className="mb-4 w-100">
+                                        <label htmlFor="link-name" className="form-label fw-bold">Link Name</label>
+                                        <input type="text" className="form-control input-bg" id="link-name"
+                                        placeholder='Link Name'
+                                        onChange={handleLinkNameChange}
+                                        value={normalLinkName} />
+                                    </div>
+                                    {/* <DriveFileRenameOutlineIcon
+                                        className='text-white'
                                         sx={{
                                             color: 'action.active',
                                             mr: 2,
@@ -3354,16 +3502,18 @@ const renderNotConnected = () : JSX.Element => (
                                         variant="standard"
                                         sx={{ width: '100%' }}
                                         onChange={handleLinkNameChange}
-                                        value={normalLinkName} />
+                                        value={normalLinkName} /> */}
                                 </Box>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        width: '90%',
-                                        mb: 0
-                                    }}>
-                                    <LinkOutlinedIcon
+                                <Box>
+                                    <div className="mb-4 w-100">
+                                        <label htmlFor="link-value" className="form-label fw-bold">Enter a URL</label>
+                                        <input type="url" className="form-control input-bg" id="link-value"
+                                        placeholder='Enter a URL'
+                                        onChange={handleLinkNameChange}
+                                        value={normalLinkName} />
+                                    </div>
+                                    {/* <LinkOutlinedIcon
+                                        className='text-white'
                                         sx={{
                                             color: 'action.active',
                                             mr: 2,
@@ -3375,7 +3525,7 @@ const renderNotConnected = () : JSX.Element => (
                                         variant="standard"
                                         sx={{ width: '100%' }}
                                         onChange={handleLinkValueChange}
-                                        value={normalLinkValue} />
+                                        value={normalLinkValue} /> */}
                                 </Box>
 
                             </TabPanel>
@@ -3386,106 +3536,145 @@ const renderNotConnected = () : JSX.Element => (
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'flex-end',
-                                        width: '90%',
-                                        mb: 1.5
+                                        width: '95%',
+                                        mb: 2
                                     }}>
                                     <GoogleOutlined
                                         style={{
                                             color: 'action.active',
                                             marginRight: '4%',
-                                            fontSize: '22px'
+                                            fontSize: '22px',
+                                            marginBottom:'5px'
                                         }} />
-                                    <TextField
+                                    <div className="w-100">
+                                        {/* <label htmlFor="email-link" className="form-label fw-bold">Your Email</label> */}
+                                        <input type="url" className="form-control input-bg" id="email-link"
+                                        placeholder='Your Email'
+                                        onChange={handleEmailChange}
+                                        value={emailValue} />
+                                    </div>
+                                    {/* <TextField
                                         id="email-link"
                                         label="Your Email"
                                         variant="standard"
                                         sx={{ width: '100%' }}
                                         onChange={handleEmailChange}
-                                        value={emailValue} />
+                                        value={emailValue} /> */}
                                 </Box>
                                 <Box
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'flex-end',
-                                        width: '90%',
-                                        mb: 1.5
+                                        width: '95%',
+                                        mb: 2
                                     }}>
                                     <InstagramOutlined
                                         style={{
                                             color: 'action.active',
                                             marginRight: '4%',
-                                            fontSize: '22px'
+                                            fontSize: '22px',
+                                            marginBottom: '5px',
                                         }} />
-                                    <TextField
+                                    <div className="w-100">
+                                        {/* <label htmlFor="instagram-link" className="form-label fw-bold">Instagram</label> */}
+                                        <input type="url" className="form-control input-bg" id="instagram-link"
+                                        placeholder='Instagram'
+                                        onChange={handleInstagramChange}
+                                        value={instagramValue} />
+                                    </div>
+                                    {/* <TextField 
                                         id="instagram-link"
                                         label="Instagram"
                                         variant="standard"
                                         sx={{ width: '100%' }}
                                         onChange={handleInstagramChange}
-                                        value={instagramValue} />
+                                        value={instagramValue} /> */}
                                 </Box>
                                 <Box
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'flex-end',
-                                        width: '90%',
-                                        mb: 1.5
+                                        width: '95%',
+                                        mb: 2
                                     }}>
                                     <TwitterOutlined
                                         style={{
                                             color: 'action.active',
                                             marginRight: '4%',
-                                            fontSize: '22px'
+                                            fontSize: '22px',
+                                            marginBottom: '5px',
                                         }} />
-                                    <TextField
+                                    <div className="w-100">
+                                        {/* <label htmlFor="twitter-link" className="form-label fw-bold">Twitter</label> */}
+                                        <input type="url" className="form-control input-bg" id="twitter-link"
+                                        placeholder='Twitter'
+                                        onChange={handleTwitterChange}
+                                        value={twitterValue} />
+                                    </div>
+                                    {/* <TextField
                                         id="twitter-link"
                                         label="Twitter"
                                         variant="standard"
                                         sx={{ width: '100%' }}
                                         onChange={handleTwitterChange}
-                                        value={twitterValue} />
+                                        value={twitterValue} /> */}
                                 </Box>
                                 <Box
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'flex-end',
-                                        width: '90%',
-                                        mb: 1.5
+                                        width: '95%',
+                                        mb: 2
                                     }}>
                                     <LinkedinOutlined
                                         style={{
                                             color: 'action.active',
                                             marginRight: '4%',
-                                            fontSize: '22px'
+                                            fontSize: '22px',
+                                            marginBottom: '5px',
                                         }} />
-                                    <TextField
+                                    <div className="w-100">
+                                        {/* <label htmlFor="linkedin-link" className="form-label fw-bold">Linkedin</label> */}
+                                        <input type="url" className="form-control input-bg" id="linkedin-link"
+                                        placeholder='Linkedin'
+                                        onChange={handleLinkedinChange}
+                                        value={linkedinValue} />
+                                    </div>
+                                    {/* <TextField
                                         id="linkedin-link"
                                         label="Linkedin"
                                         variant="standard"
                                         sx={{ width: '100%' }}
                                         onChange={handleLinkedinChange}
-                                        value={linkedinValue} />
+                                        value={linkedinValue} /> */}
                                 </Box>
                                 <Box
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'flex-end',
-                                        width: '90%',
-                                        mb: 1.5
+                                        width: '95%',
                                     }}>
                                     <FacebookOutlined
                                         style={{
                                             color: 'action.active',
                                             marginRight: '4%',
-                                            fontSize: '22px'
+                                            fontSize: '22px',
+                                            marginBottom: '5px',
                                         }} />
-                                    <TextField
+                                    <div className="w-100">
+                                        {/* <label htmlFor="facebook-link" className="form-label fw-bold">Facebook</label> */}
+                                        <input type="url" className="form-control input-bg" id="facebook-link"
+                                        placeholder='Facebook'
+                                        onChange={handleFacebookChange}
+                                        value={facebookValue} />
+                                    </div>
+                                    {/* <TextField
                                         id="facebook-link"
                                         label="Facebook"
                                         variant="standard"
                                         sx={{ width: '100%' }}
                                         onChange={handleFacebookChange}
-                                        value={facebookValue} />
+                                        value={facebookValue} /> */}
                                 </Box>
                             </TabPanel>
                         </Box>
@@ -3502,15 +3691,17 @@ const renderNotConnected = () : JSX.Element => (
             >
                 <Box sx={add_Instant_ModalStyle}>
                     <Typography
+                        className="text-white p-0 m-0"
                         id="modal-modal-title"
                         variant="h6"
                         component="h2"
                         sx={{ ml: 0 }}>
                         INSTANT EMBED
                         <Fab
+                            className='bg-dark'
                             sx={{
                                 width: '25%',
-                                ml: 7
+                                ml: 3
                             }}
                             variant="extended"
                             size="medium"
@@ -3521,6 +3712,7 @@ const renderNotConnected = () : JSX.Element => (
                             Done
                         </Fab>
                         <Fab
+                            className='bg-danger'
                             sx={{
                                 width: '25%',
                                 ml: 3
@@ -3537,14 +3729,16 @@ const renderNotConnected = () : JSX.Element => (
                     <Typography
                         id="modal-modal-description"
                         sx={{ my: 3 }}>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'flex-end',
-                                width: '90%',
-                                mb: 3
-                            }}>
-                            <DriveFileRenameOutlineIcon
+                        <Box>
+                            <div className="mb-3 w-100">
+                                <label htmlFor="instant-title" className="form-label fw-bold text-white">Title Label</label>
+                                <input type="url" className="form-control input-bg" id="instant-title"
+                                placeholder='Title Label'
+                                onChange={handleInstantTitleChange}
+                                value={instantTitle} />
+                            </div>
+                            {/* <DriveFileRenameOutlineIcon
+                                className='text-white'
                                 sx={{
                                     color: 'action.active',
                                     mr: 2,
@@ -3556,16 +3750,21 @@ const renderNotConnected = () : JSX.Element => (
                                 variant="standard"
                                 sx={{ width: '100%' }}
                                 onChange={handleInstantTitleChange}
-                                value={instantTitle} />
+                                value={instantTitle} /> */}
                         </Box>
                         <Box
                             sx={{
-                                display: 'flex',
-                                alignItems: 'flex-end',
-                                width: '90%',
                                 mb: 3
                             }}>
-                            <LinkOutlinedIcon
+                            <div className="mb-3 w-100">
+                                <label htmlFor="instant-url" className="form-label fw-bold text-white">Link</label>
+                                <input type="url" className="form-control input-bg" id="instant-url"
+                                placeholder='Link'
+                                onChange={handleInstantUrlChange}
+                                value={instantUrl} />
+                            </div>
+                            {/* <LinkOutlinedIcon
+                                className='text-white'
                                 sx={{
                                     color: 'action.active',
                                     mr: 2,
@@ -3577,7 +3776,7 @@ const renderNotConnected = () : JSX.Element => (
                                 variant="standard"
                                 sx={{ width: '100%' }}
                                 onChange={handleInstantUrlChange}
-                                value={instantUrl} />
+                                value={instantUrl} /> */}
                         </Box>
                     </Typography>
                 </Box>
@@ -3593,12 +3792,14 @@ const renderNotConnected = () : JSX.Element => (
             >
                 <Box sx={add_Text_ModalStyle}>
                     <Typography
+                        className='text-white'
                         id="modal-modal-title"
                         variant="h6"
                         component="h2"
                         sx={{ ml: 0 }}>
                         ADD TEXT
                         <Fab
+                            className='bg-dark'
                             sx={{
                                 width: '25%',
                                 ml: 7
@@ -3612,6 +3813,7 @@ const renderNotConnected = () : JSX.Element => (
                             Done
                         </Fab>
                         <Fab
+                            className='bg-danger'
                             sx={{
                                 width: '25%',
                                 ml: 3
@@ -3639,26 +3841,36 @@ const renderNotConnected = () : JSX.Element => (
                             <CircularProgress color="inherit" />
                         </Backdrop>
                         <Box
+                           
                             sx={{
                                 display: 'flex',
                                 alignItems: 'flex-end',
-                                width: '90%',
-                                mb: 3
+                                width: '100%',
+                                mb: 2
                             }}>
-                            <DriveFileRenameOutlineIcon
+                            <div className="mb-3 w-100">
+                                <label htmlFor="text-name" className="form-label fw-bold text-white">Name</label>
+                                <input type="url" className="form-control input-bg" id="text-name"
+                                placeholder='Name'
+                                onChange={handleTextNameChange}
+                                value={textName} />
+                            </div>
+                            {/* <DriveFileRenameOutlineIcon
+                                className='text-white'
                                 sx={{
                                     color: 'action.active',
                                     mr: 2,
                                     my: 0.5
                                 }} />
-                            <TextField
+                                <TextField
                                 id="text-name"
                                 label="Name"
                                 variant="standard"
                                 sx={{ width: '100%' }}
                                 onChange={handleTextNameChange}
-                                value={textName} />
+                                value={textName} /> */} 
                         </Box>
+                        <Box className='input-file mb-3'>
                         <FileUploader
                             multiple={false}
                             handleChange={handleTextImageUpload}
@@ -3666,6 +3878,7 @@ const renderNotConnected = () : JSX.Element => (
                             types={uploadImageFileTypes}
                         />
                         <p
+                            className='text-white'
                             style={{
                                 color: 'action.active',
                                 marginTop: '1vh'
@@ -3674,6 +3887,7 @@ const renderNotConnected = () : JSX.Element => (
                                 `File name: ${textImageUploadedFile.name}` :
                                 "No files uploaded yet"}
                         </p>
+                        </Box>
                         <ReactQuill
                             // ref={quill}
                             theme="snow"
@@ -3681,18 +3895,29 @@ const renderNotConnected = () : JSX.Element => (
                             onChange={changeHandler}
                             modules={modules}
                             formats={formats}
+                            className='add-text-field mb-3'
                             style={{
-                                maxHeight: '45vh',
-                                overflowY: 'scroll'
+                                borderRadius: '5px',
+                                maxHeight: '25vh',
+                                overflowY: 'scroll',
+                                background:'#D9D9D9'
                             }}
                         />
                         <Box sx={{
-                            display: 'flex',
-                            alignItems: 'flex-end',
-                            width: '90%',
+                            // display: 'flex',
+                            // alignItems: 'flex-end',
+                            // width: '100%',
                             mb: 3
                         }}>
-                            <LinkOutlinedIcon
+                            <div className="mb-3 w-100">
+                                <label htmlFor="text-url" className="form-label fw-bold text-white">Text Url</label>
+                                <input type="url" className="form-control input-bg" id="text-url"
+                                placeholder='Text Url'
+                                onChange={handleTextUrlChange}
+                                value={textUrl} />
+                            </div>
+                            {/* <LinkOutlinedIcon
+                                className='text-white'
                                 sx={{
                                     color: 'action.active',
                                     mr: 2,
@@ -3704,13 +3929,13 @@ const renderNotConnected = () : JSX.Element => (
                                 variant="standard"
                                 sx={{ width: '100%' }}
                                 onChange={handleTextUrlChange}
-                                value={textUrl} />
+                                value={textUrl} /> */}
                         </Box>
                     </Typography>
                 </Box>
             </Modal>
             <Modal
-                open={showSelectSiteType}
+                open={showSelectSiteType}   
                 onClose={onClosePublishPressed}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
@@ -3740,6 +3965,7 @@ const renderNotConnected = () : JSX.Element => (
                                     to everyone.
                                 </React.Fragment>}>
                                 <Fab
+                                    className='text-white bg-dark'
                                     variant="extended"
                                     size="small"
                                     sx={{
@@ -3748,7 +3974,9 @@ const renderNotConnected = () : JSX.Element => (
                                         mr: 2
                                     }}
                                     onClick={onClickPublicBtn} >
-                                    <PublicIcon sx={{ mr: 1 }} />
+                                    <PublicIcon
+                                        className='text-white'
+                                     sx={{ mr: 1 }} />
                                     Public
                                 </Fab>
                             </HtmlTooltip>
@@ -3760,6 +3988,7 @@ const renderNotConnected = () : JSX.Element => (
                                         <em>{"who are accepted"}</em>.
                                     </React.Fragment>}>
                                 <Fab
+                                    className='text-white bg-dark'
                                     variant="extended"
                                     size="small"
                                     sx={{
@@ -3768,7 +3997,9 @@ const renderNotConnected = () : JSX.Element => (
                                         mr: 2
                                     }}
                                     onClick={onClickPrivateBtn} >
-                                    <VerifiedUserIcon sx={{ mr: 1 }} />
+                                    <VerifiedUserIcon
+                                     className='text-white'
+                                    sx={{ mr: 1 }} />
                                     Private
                                 </Fab>
                             </HtmlTooltip>

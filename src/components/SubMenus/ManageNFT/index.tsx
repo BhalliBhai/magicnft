@@ -115,14 +115,15 @@ const ManageNFT = () => {
         handleCloseShowNFTSetting();
     }
     return (
-        <div style={{ width: '100%', height: '100vh', backgroundColor: 'rgb(0, 0, 0, 20%)' }}>
-            <ImageList sx={{ position: 'absolute', width: (showStatusNFT ? '47%' : '97%'), height: '94vh', left: '1.5%', top: '13vh' }}>
-                <ImageListItem key="Subheader" cols={(showStatusNFT ? 2 : 4)}>
-                    <ListSubheader component="div"> My Image NFTs <Button variant='contained' color='error' sx={{ marginLeft: '5%' }} onClick={() => navigate('/home/mintnft')}> Mint New NFT </Button></ListSubheader>
+        <div style={{ width: '100%', height: '97vh', backgroundColor: '#2F2F2F', padding: '10px' }}>
+            <ImageList className='scroll-bar p-3' sx={{ position: 'absolute', backgroundColor: 'black', borderRadius: '10px', width: (showStatusNFT ? '47%' : '95%'), height: '85vh', left: '1.5%', right: '1.5%', top: '13vh' }}>
+                <ImageListItem className='mb-2'  key="Subheader" cols={(showStatusNFT ? 2 : 4)} >
+                    <ListSubheader component="div" className='text-white bg-black'> <span className='fw-bold'>My Image NFTs</span> <Button className='bg-dark' variant='contained' sx={{ marginLeft: '5%' }} onClick={() => navigate('/home/mintnft')}> Mint New NFT </Button></ListSubheader>
                 </ImageListItem>
                 {itemData.map((item) => (
                     <ImageListItem key={item.img}>
                         <img
+                            className='rounded'
                             src={`${item.img}?w=248&fit=crop&auto=format`}
                             srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                             alt={item.title}
@@ -165,10 +166,10 @@ const ManageNFT = () => {
                 ))}
             </ImageList>
             {showStatusNFT ? (
-                <Card className='edit-nft'>
+                <Card className='edit-nft' style={{ background: '#000000'}}>
                     <Backdrop
                         sx={{
-                            color: '#fff',
+                            color: '#2F2F2F',
                             zIndex: (theme) =>
                                 theme.zIndex.drawer + 1
                         }}
@@ -177,6 +178,7 @@ const ManageNFT = () => {
                         <CircularProgress color="inherit" />
                     </Backdrop>
                     <Typography
+                        className='text-black'
                         sx={{
                             position: 'absolute',
                             left: '7%',
@@ -185,6 +187,7 @@ const ManageNFT = () => {
                         variant='h5'>My Bear
                     </Typography>
                     <Button
+                        className='bg-dark'
                         variant='contained'
                         sx={{
                             position: 'absolute',
@@ -204,6 +207,7 @@ const ManageNFT = () => {
                             height: '33vh'
                         }} />
                     <TextField
+                        className=''
                         id="outlined-multiline-static"
                         label="Description"
                         multiline

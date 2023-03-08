@@ -46,7 +46,7 @@ import CardContent from '@mui/material/CardContent';
 
 import { useNavigate } from "react-router-dom";
 
-import endpoint from '../../../endpoint.config';
+import endpoint from '../../endpoint.config';
 
 const adminModalStyle = {
   position: 'absolute' as 'absolute',
@@ -54,10 +54,11 @@ const adminModalStyle = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '50%',
-  height: '25vh',
-  bgcolor: 'rgba( 255, 255, 255, 70%)',
+  height: '30vh',
+  bgcolor: 'rgba( 0, 0, 0, 70%)',
   border: '2px solid #000',
   boxShadow: 24,
+  borderRadius: '10px',
   p: 4,
 };
 
@@ -227,7 +228,7 @@ const MainPage = () => {
         onClose={closeCreator}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
-      >
+      > 
         <DialogTitle id="scroll-dialog-title"><span style={{ fontWeight: 'bold', color: 'rgb( 255, 124, 123)' }}>MagicNFTy</span></DialogTitle>
         <DialogContent dividers={true} >
           <Card sx={{ minWidth: 350, minHeight: 300 }}>
@@ -353,18 +354,32 @@ const MainPage = () => {
       aria-describedby="modal-modal-description"
     >
       <Box sx={adminModalStyle}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Typography className="text-white" id="modal-modal-title" variant="h6" component="h2">
           ACCESS TO ADMIN PAGE
         </Typography>
         <Typography id="modal-modal-description" sx={{ mt: 3 }}>
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <AttachEmailIcon sx={{ color: 'action.active', mr: 2, my: 0.5 }} />
-            <TextField id="input-with-sx" label="Input Your Email" variant="standard" sx={{ mr: 3, my: 0 }} onChange={handleAdminEmail} value={adminEmail} />
-            <KeyIcon sx={{ color: 'action.active', mr: 2, my: 0 }} />
-            <TextField id="input-with-sx" label="Input Password" variant="standard" type="password" sx={{ mr: 2, my: 0 }} onChange={handleAdminPassword} value={adminPassword} />
-            <Fab variant="extended" size="medium" sx={{ ml: 5, my: 0 }} onClick={checkAdmin}>
+                <div className="me-2">
+                  <label htmlFor="input-with-sx" className="form-label fw-bold text-white">Input Your Email</label>
+                  <input type="email" className="form-control" id="input-with-sx"
+                    placeholder='Input Your Email'
+                    onChange={handleAdminEmail} 
+                    value={adminEmail} />
+                </div>
+                <div>
+                  <label htmlFor="input-with-sx" className="form-label fw-bold text-white">Input Password</label>
+                  <input type="password" className="form-control" id="input-with-sx"
+                    placeholder='Input Password'
+                    onChange={handleAdminPassword} 
+                    value={adminPassword} />
+                </div>
+            {/* <AttachEmailIcon sx={{ color: 'action.active', mr: 2, my: 0.5 }} />
+            <TextField id="input-with-sx" label="Input Your Email" variant="standard" sx={{ mr: 3, my: 0 }} onChange={handleAdminEmail} value={adminEmail} /> */}
+            {/* <KeyIcon sx={{ color: 'action.active', mr: 2, my: 0 }} />
+            <TextField id="input-with-sx" label="Input Password" variant="standard" type="password" sx={{ mr: 2, my: 0 }} onChange={handleAdminPassword} value={adminPassword} /> */}
+            <Fab className="text-white bg-dark" variant="extended" size="medium" sx={{ ml: 5, my: 0 }} onClick={checkAdmin}>
               <VerifiedUserIcon sx={{ mr: 1 }} />
-              ACCESS
+              <span className="pt-1">ACCESS</span>
             </Fab>
           </Box>
         </Typography>
@@ -378,16 +393,24 @@ const MainPage = () => {
       aria-describedby="modal-modal-description"
     >
       <Box sx={adminModalStyle}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Typography className='text-white' id="modal-modal-title" variant="h6" component="h2">
           ACCESS TO CREATOR'S PAGE
         </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 3 }}>
+        <Typography id="modal-modal-description" sx={{ mt: 1 }}>
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <LinkIcon sx={{ color: 'action.active', mr: 2, my: 0.5 }} />
-            <TextField id="input-with-sx" label="Input Your Specialized Url" variant="standard" sx={{ mr: 3, my: 0, width: '65%' }} onChange={handleCreatorUrl} value={creatorUrl} />
-            <Fab variant="extended" size="medium" sx={{ ml: 5, my: 0 }} onClick={checkCreator}>
+
+              <div className=" w-100">
+                  <label htmlFor="input-with-sx" className="form-label fw-bold text-white">Input Your Specialized URL</label>
+                  <input type="text" className="form-control" id="input-with-sx"
+                    placeholder='Input Your Specialized URL'
+                    onChange={handleCreatorUrl} 
+                    value={creatorUrl} />
+              </div>
+            {/* <LinkIcon sx={{ color: 'action.active', mr: 2, my: 0.5 }} />
+            <TextField id="input-with-sx" label="Input Your Specialized URL" variant="standard" sx={{ mr: 3, my: 0, width: '65%' }} onChange={handleCreatorUrl} value={creatorUrl} /> */}
+            <Fab className="text-white bg-dark" variant="extended" size="medium" sx={{ ml: 5, my: 0 }} onClick={checkCreator}>
               <VerifiedUserIcon sx={{ mr: 1 }} />
-              ACCESS
+              <span className="pt-1">ACCESS</span>
             </Fab>
           </Box>
         </Typography>
@@ -401,16 +424,23 @@ const MainPage = () => {
       aria-describedby="modal-modal-description"
     >
       <Box sx={adminModalStyle}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Typography className="text-white" id="modal-modal-title" variant="h6" component="h2">
           ACCESS TO PUBLIC PAGES
         </Typography>
         <Typography id="modal-modal-description" sx={{ mt: 3 }}>
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <LinkIcon sx={{ color: 'action.active', mr: 2, my: 0.5 }} />
-            <TextField id="input-with-sx" label="Input Public Page Url" variant="standard" sx={{ mr: 3, my: 0, width: '65%' }} onChange={handlePublicUrl} value={publicUrl} />
-            <Fab variant="extended" size="medium" sx={{ ml: 5, my: 0 }} onClick={checkPublic}>
+                <div className=" w-100">
+                  <label htmlFor="input-with-sx" className="form-label fw-bold text-white">Input Public Page URL</label>
+                  <input type="text" className="form-control" id="input-with-sx"
+                    placeholder='Input Public Page Url'
+                    onChange={handlePublicUrl} 
+                    value={publicUrl} />
+                </div>
+            {/* <LinkIcon sx={{ color: 'action.active', mr: 2, my: 0.5 }} />
+            <TextField id="input-with-sx" label="Input Public Page Url" variant="standard" sx={{ mr: 3, my: 0, width: '65%' }} onChange={handlePublicUrl} value={publicUrl} /> */}
+            <Fab className="text-white bg-dark" variant="extended" size="medium" sx={{ ml: 5, my: 0 }} onClick={checkPublic}>
               <VerifiedUserIcon sx={{ mr: 1 }} />
-              ACCESS
+              <span className="pt-1">ACCESS</span>
             </Fab>
           </Box>
         </Typography>
@@ -467,7 +497,10 @@ const MainPage = () => {
         direction="down"
       >
         <SpeedDialAction key="admin" icon={<SupervisorAccountIcon />} tooltipTitle="Connect To Admin Panel" onClick={onAdminLogin}></SpeedDialAction>
-        <SpeedDialAction key="public" icon={<PublicIcon />} tooltipTitle="Connect To Public Sites" onClick={onPublicLogin}></SpeedDialAction>
+        <SpeedDialAction key="public" icon={<PublicIcon />} tooltipTitle="Connect To Public Sites" 
+        // onClick={onPublicLogin}
+        onClick={checkPublic}
+        ></SpeedDialAction>
         <SpeedDialAction key="private" icon={<VpnLockIcon />} tooltipTitle="Connect To Creator Page" onClick={onCreatorLogin}></SpeedDialAction>
         {!btnDisabled ? <SpeedDialAction key="request" icon={<SendTimeExtensionIcon />} tooltipTitle="Send Creator Request" onClick={showCreator} ></SpeedDialAction> : <></>}
         <SpeedDialAction key="info" icon={<InfoIcon />} tooltipTitle="About Magic-NFTy"></SpeedDialAction>

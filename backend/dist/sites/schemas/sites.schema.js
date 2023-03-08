@@ -35,6 +35,12 @@ exports.SiteSchema = new mongoose.Schema({
     },
     published: {
         type: Boolean,
+    },
+    tokenGate: {
+        type: Boolean,
+    },
+    chainIds: {
+        type: Array,
     }
 });
 //# sourceMappingURL=sites.schema.js.map

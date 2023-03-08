@@ -320,17 +320,17 @@ const MintNFT = () => {
 
 
     return (
-        <div style={{ width: '100%', height: '110vh', backgroundColor: 'rgb(0, 0, 0, 20%)' }}>
+        <div style={{ width: '100%', height: '100vh', backgroundColor: '#2F2F2F' }}>
 
             {!walletAddress ? 
             (
                 <div>
-                <Card className='connect-div'> 
-                <Box>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Card className='connect-div bg-black' style={{borderRadius: '10px'}}> 
+                <Box className='rounded'>
+                <Typography className='text-white' id="modal-modal-title" variant="h6" component="h2">
                     Connect to Phantom Wallet!
                 </Typography>
-                <Button variant="contained" onClick={connectWallet}>Connect</Button>
+                <Button className='bg-dark mt-3' variant="contained" onClick={connectWallet}>Connect</Button>
                 </Box>
                 </Card>
                 </div>

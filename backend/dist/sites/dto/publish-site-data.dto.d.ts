@@ -5,4 +5,6 @@ export declare class PublishSiteDto {
     readonly siteDescription: string;
     readonly siteThumbnail: string;
     readonly siteType: string;
+    readonly tokenGate: boolean;
+    readonly chainIds: Array<number>;
 }

@@ -65,3 +65,25 @@
     color: white;
     /* left: 0%; */
 }
+
+.scroll-bar {
+    overflow-y: scroll !important;
+}
+
+.scroll-bar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+    border: 5px solid #3F3F3F;
+}
+
+.css-yw020d-MuiAccordionSummary-expandIconWrapper{
+    color: white !important;
+}

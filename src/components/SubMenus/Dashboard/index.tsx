@@ -22,7 +22,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 
 import './index.scss';
 
-import endpoint from '../../../../endpoint.config';
+import endpoint from '../../../endpoint.config';
+import { Box } from '@mui/material';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -58,17 +59,15 @@ const userDataCard = {
     left: '1%',
     top: '12vh',
     width: '98%',
-    height: '18vh'
+    height: '18vh',
 }
 
 const siteDataCard = {
     position: 'absolute',
     left: '1%',
     top: '33vh',
-
     width: '98%',
-    height: '75vh',
-
+    height: '65vh',
     padding: '5vh 0% 3vh 3%',
     fontFamily: 'Franklin Gothic'
 }
@@ -116,8 +115,8 @@ const Dashboard = () => {
     const [changeSwitch, setChangeSwitch] = useState('');
 
     return (
-        <div style={{ width: '100%', height: '100vh', background: 'rgba(0, 0, 0, 20%)' }}>
-            <Snackbar
+        <div style={{ width: '100%', minHeight: '100vh', background: '#2F2F2F' }}>
+            <Snackbar 
                 open={openSuccessNotification}
                 autoHideDuration={4000}
                 onClose={handleSuccessClose}
@@ -125,29 +124,33 @@ const Dashboard = () => {
             >
                 <Alert severity="success" onClose={handleSuccessClose}>Site url <strong>copied to clipboard successfully!</strong></Alert>
             </Snackbar>
-            <Card sx={userDataCard}>
+            <Card className='text-white bg-black' style={{ borderRadius: '10px',}} sx={userDataCard}>
                 <StyledBadge
                     overlap="circular"
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                     variant="dot"
                     sx={{ position: 'absolute', left: '3%', top: '5vh' }}
                 >
-                    <Avatar alt="Creator Image" src='/images/github-logo.png' />
+                    <Avatar alt="Creator Image" src='/images/mysterious.jpg' />
                 </StyledBadge>
-                <span style={{ position: 'absolute', left: '10%', top: '5vh', fontFamily: 'Segoe UI', fontSize: '17px', textDecoration: 'underline' }}> {localStorage.getItem('fullName')} / {localStorage.getItem('email')}</span>
+                <span style={{ position: 'absolute', left: '10%', top: '6vh', fontFamily: 'Segoe UI', fontSize: '17px', textDecoration: 'underline' }}> {localStorage.getItem('fullName')} / {localStorage.getItem('email')}</span>
             </Card>
-            <Card sx={siteDataCard}> <LanguageIcon fontSize='medium' sx={{ my: 2 }} /><span style={{ position: 'absolute', left: '6%', top: '7vh', fontSize: '18px' }}>My Sites / Total:</span> <span style={{ position: 'absolute', left: '15%', top: '7vh', fontSize: '18px', color: 'rgb(255, 125, 125)' }}>{siteData.length} Sites</span>
-                {
+            <Card className='text-white bg-black py-5 scroll-bar' style={{ borderRadius: '10px',}} sx={siteDataCard}> 
+            <div className='mb-3'>
+            <LanguageIcon className='text-white' fontSize='medium' sx={{ mb:1 }} /><span className='ms-2' style={{  fontSize: '18px' }}>My Sites / Total: </span> <span className='ms-2' style={{fontSize: '18px', color: 'rgb(255, 125, 125)' }}>{siteData.length} Sites</span>
+            </div>
+                
+                {  
                     siteData.map((item: any, index: any) => {
                         return (
-                            <Accordion expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)} sx={{ width: '95%', my: 1 }}>
+                            <Accordion className='bg-dark rounded text-white' expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)} sx={{ width: '95%', my: 1 }}>
                                 <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel-content"
                                     id="panel-header"
                                 >
                                     <Typography sx={{ ml: 2, width: '80%' }}> https://{endpoint.BaseUrl}/public?token={item.siteUrl} / {item.siteType? item.siteType: 'draft'} page</Typography>
-                                    <Switch sx={{ ml: 30 }} />
+                                    {/* <Switch sx={{ ml: 30 }} /> */}
 
                                 </AccordionSummary>
                                 <AccordionDetails>
@@ -163,7 +166,8 @@ const Dashboard = () => {
                             </Accordion>
                         )
                     }
-                    )}
+                )}
+                
             </Card >
         </div >);
 }
